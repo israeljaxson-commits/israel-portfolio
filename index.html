@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Israel Ekpenyong (I·E) — AI Filmmaker & Visual Storyteller</title>
 
-  <!-- Google Fonts: Cormorant Garamond for headings and Inter for body and UI text -->
+  <!-- Google Fonts: Instrument Serif for display headlines, Plus Jakarta Sans for UI, JetBrains Mono for metadata -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
     rel="stylesheet"
   />
 
@@ -31,9 +31,10 @@
           },
           fontFamily: {
             serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-            display: ['"Inter"', 'sans-serif'],
-            bebas: ['"Bebas Neue"', 'sans-serif'],
-            sans: ['"Inter"', 'sans-serif'],
+            instrument: ['"Instrument Serif"', 'serif'],
+            display: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
           },
         },
       },
@@ -51,8 +52,20 @@
     body {
       background-color: var(--bg-obsidian);
       color: var(--text-ivory);
-      font-family: 'Inter', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 82% 18%, rgba(212, 175, 55, 0.045), transparent 30%),
+        radial-gradient(ellipse at 18% 78%, rgba(232, 204, 117, 0.025), transparent 34%);
+      mix-blend-mode: screen;
     }
 
     /* Subtle Film Grain Overlay */
@@ -61,7 +74,7 @@
       inset: 0;
       pointer-events: none;
       z-index: 60;
-      opacity: 0.032;
+      opacity: 0.04;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 
@@ -150,7 +163,7 @@
       align-items: center;
       min-height: 2.1rem;
       border-radius: 999px;
-      font-family: "Inter", sans-serif;
+      font-family: "Plus Jakarta Sans", sans-serif;
       font-size: 0.67rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -331,9 +344,9 @@
         <div class="lg:col-span-7 max-w-4xl space-y-7 z-10">
           <!-- Eyebrow -->
           <!-- Display Headline -->
-          <h1 class="font-display text-5xl sm:text-7xl xl:text-[5.5rem] font-semibold leading-[0.96] tracking-[-0.05em] text-ivory">
+          <h1 class="font-instrument text-5xl sm:text-7xl xl:text-[5.5rem] font-normal leading-[0.96] tracking-[-0.02em] text-ivory">
             Israel
-            <span class="block font-semibold text-champagneLight">Ekpenyong</span>
+            <span class="block font-normal text-champagneLight">Ekpenyong</span>
           </h1>
 
           <!-- Role Tags -->
@@ -344,9 +357,9 @@
           </div>
 
           <!-- Positioning Statement -->
-          <p class="font-bebas max-w-xl text-base sm:text-lg text-mutedIvory leading-relaxed tracking-[0.08em]">
-            Directing cinema-grade worlds where generative AI meets disciplined editorial pacing, atmospheric sound
-            design, and intentional color grading—from mythic lore universes to high-velocity automotive narratives.
+          <p class="max-w-xl text-base sm:text-lg text-mutedIvory leading-relaxed tracking-[0.03em]">
+            I direct and cut narrative AI films, mythic lore documentaries, and automotive history pieces—built frame by
+            frame in Kling, Runway, and DaVinci Resolve.
           </p>
 
           <!-- Dual CTAs -->
@@ -375,18 +388,36 @@
 
           <!-- Quick Reel Telemetry Strip -->
           <div class="pt-6 border-t border-hairline grid grid-cols-3 gap-4 max-w-lg">
-            <div>
-              <p class="font-serif text-2xl sm:text-3xl text-ivory">24 FPS</p>
-              <p class="font-display text-[10px] tracking-[0.2em] text-mutedIvory uppercase mt-0.5">CINEMA CADENCE</p>
-            </div>
-            <div>
-              <p class="font-serif text-2xl sm:text-3xl text-champagne">2 WORLDS</p>
-              <p class="font-display text-[10px] tracking-[0.2em] text-mutedIvory uppercase mt-0.5">ORIGINAL CHANNELS</p>
-            </div>
-            <div>
-              <p class="font-serif text-2xl sm:text-3xl text-ivory">GLOBAL</p>
-              <p class="font-display text-[10px] tracking-[0.2em] text-mutedIvory uppercase mt-0.5">REMOTE DIRECTION</p>
-            </div>
+            <a
+              href="https://www.youtube.com/@EnochianLore"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit the Enochian Lore YouTube channel"
+              class="group"
+            >
+              <p class="font-serif text-2xl sm:text-3xl text-ivory group-hover:text-champagneLight transition-colors">BIBLICAL</p>
+              <p class="font-mono text-[9px] tracking-[0.08em] text-mutedIvory uppercase mt-0.5 group-hover:text-ivory transition-colors">ENOCHIAN LORE ↗</p>
+            </a>
+            <a
+              href="https://www.youtube.com/@Therollingchassis"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit The Rolling Chassis YouTube channel"
+              class="group"
+            >
+              <p class="font-serif text-2xl sm:text-3xl text-champagne group-hover:text-champagneLight transition-colors">CAR</p>
+              <p class="font-mono text-[9px] tracking-[0.08em] text-mutedIvory uppercase mt-0.5 group-hover:text-ivory transition-colors">ROLLING CHASSIS ↗</p>
+            </a>
+            <a
+              href="https://www.youtube.com/@IZZYSTUDIO-26"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit the Izzy Studio YouTube channel"
+              class="group"
+            >
+              <p class="font-serif text-2xl sm:text-3xl text-ivory group-hover:text-champagneLight transition-colors">MOVIE</p>
+              <p class="font-mono text-[9px] tracking-[0.08em] text-mutedIvory uppercase mt-0.5 group-hover:text-ivory transition-colors">IZZY STUDIO ↗</p>
+            </a>
           </div>
         </div>
 
@@ -427,12 +458,12 @@
     <section class="py-20 sm:py-28 border-b border-hairline">
       <div class="max-w-6xl mx-auto px-5 sm:px-8">
         <div class="max-w-4xl space-y-6">
-          <p class="font-display text-xs tracking-[0.28em] text-champagne uppercase">
+          <p class="font-mono text-[11px] tracking-[0.15em] text-champagne uppercase">
             THE APPROACH
           </p>
-          <h2 class="font-serif text-4xl sm:text-6xl lg:text-[4.25rem] leading-[1.05] text-ivory">
-            Not just content.
-            <span class="italic text-champagneLight block sm:inline">Something worth watching.</span>
+          <h2 class="font-instrument font-normal text-3xl sm:text-4xl lg:text-5xl leading-[1.1] tracking-[-0.02em] text-ivory">
+            Generative video fails when every shot looks like a screensaver. I treat AI clips like raw dailies—cutting
+            on action, matching grain and color in Resolve, and building the emotion in the sound mix.
           </h2>
           <p class="text-mutedIvory text-base sm:text-lg max-w-2xl leading-relaxed font-light">
             Generative tools can produce endless frames, but cinema lives in restraint—narrative tension, lens
@@ -442,19 +473,19 @@
 
         <ol class="mt-10 grid grid-cols-2 sm:grid-cols-4 border-t border-hairline pt-5 gap-x-4 gap-y-5">
           <li class="flex items-baseline gap-2.5">
-            <span class="font-display text-[10px] tracking-[0.16em] text-champagne">01</span>
+            <span class="font-mono text-[10px] tracking-[0.08em] text-champagne">01</span>
             <span class="font-display text-xs tracking-[0.12em] text-ivory uppercase">Creative concept</span>
           </li>
           <li class="flex items-baseline gap-2.5">
-            <span class="font-display text-[10px] tracking-[0.16em] text-champagne">02</span>
+            <span class="font-mono text-[10px] tracking-[0.08em] text-champagne">02</span>
             <span class="font-display text-xs tracking-[0.12em] text-ivory uppercase">AI generation</span>
           </li>
           <li class="flex items-baseline gap-2.5">
-            <span class="font-display text-[10px] tracking-[0.16em] text-champagne">03</span>
+            <span class="font-mono text-[10px] tracking-[0.08em] text-champagne">03</span>
             <span class="font-display text-xs tracking-[0.12em] text-ivory uppercase">Edit &amp; color</span>
           </li>
           <li class="flex items-baseline gap-2.5">
-            <span class="font-display text-[10px] tracking-[0.16em] text-champagne">04</span>
+            <span class="font-mono text-[10px] tracking-[0.08em] text-champagne">04</span>
             <span class="font-display text-xs tracking-[0.12em] text-ivory uppercase">Final frame</span>
           </li>
         </ol>
@@ -469,10 +500,10 @@
         <!-- Section Header & Filter Bar -->
         <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-5 mb-9">
           <div class="space-y-3">
-            <p class="font-display text-xs tracking-[0.28em] text-champagne uppercase">
-              THE PORTFOLIO
+            <p class="font-mono text-[11px] tracking-[0.15em] text-champagne uppercase">
+              01 / SELECTED WORK
             </p>
-            <h2 class="font-serif text-4xl sm:text-6xl text-ivory">
+            <h2 class="font-instrument font-normal text-4xl sm:text-6xl tracking-[-0.02em] text-ivory">
               Selected <span class="italic text-champagneLight">works.</span>
             </h2>
           </div>
@@ -550,10 +581,10 @@
     <section id="expertise" class="py-20 sm:py-28 border-t border-hairline">
       <div class="max-w-7xl mx-auto px-5 sm:px-8">
         <div class="max-w-3xl mb-14 space-y-3">
-          <p class="font-display text-xs tracking-[0.28em] text-champagne uppercase">
-            WHAT I CREATE
+          <p class="font-mono text-[11px] tracking-[0.15em] text-champagne uppercase">
+            02 / CREATIVE CAPABILITIES
           </p>
-          <h2 class="font-serif text-4xl sm:text-6xl text-ivory">
+          <h2 class="font-instrument font-normal text-4xl sm:text-6xl tracking-[-0.02em] text-ivory">
             Creative <span class="italic text-champagneLight">capabilities.</span>
           </h2>
         </div>
@@ -568,7 +599,7 @@
               01 —
             </div>
             <div class="lg:col-span-5">
-              <h3 class="font-display text-xl sm:text-2xl tracking-[0.08em] text-ivory group-hover:text-champagneLight transition-colors uppercase">
+              <h3 class="font-serif text-2xl sm:text-3xl text-ivory group-hover:text-champagneLight transition-colors">
                 CREATIVE DIRECTION & POST
               </h3>
             </div>
@@ -588,7 +619,7 @@
               02 —
             </div>
             <div class="lg:col-span-5">
-              <h3 class="font-display text-xl sm:text-2xl tracking-[0.08em] text-ivory group-hover:text-champagneLight transition-colors uppercase">
+              <h3 class="font-serif text-2xl sm:text-3xl text-ivory group-hover:text-champagneLight transition-colors">
                 SHORT-FORM & MICRO-DRAMAS
               </h3>
             </div>
@@ -608,7 +639,7 @@
               03 —
             </div>
             <div class="lg:col-span-5">
-              <h3 class="font-display text-xl sm:text-2xl tracking-[0.08em] text-ivory group-hover:text-champagneLight transition-colors uppercase">
+              <h3 class="font-serif text-2xl sm:text-3xl text-ivory group-hover:text-champagneLight transition-colors">
                 AUTOMOTIVE & PRODUCT VISUALS
               </h3>
             </div>
@@ -628,7 +659,7 @@
               04 —
             </div>
             <div class="lg:col-span-5">
-              <h3 class="font-display text-xl sm:text-2xl tracking-[0.08em] text-ivory group-hover:text-champagneLight transition-colors uppercase">
+              <h3 class="font-serif text-2xl sm:text-3xl text-ivory group-hover:text-champagneLight transition-colors">
                 AI FILM & CINEMATIC LORE
               </h3>
             </div>
@@ -669,11 +700,11 @@
 
         <!-- Right Bio & Metadata Grid -->
         <div class="lg:col-span-7 space-y-7">
-          <p class="font-display text-xs tracking-[0.28em] text-champagne uppercase">
-            BEHIND THE WORK
+          <p class="font-mono text-[11px] tracking-[0.15em] text-champagne uppercase">
+            03 / ABOUT
           </p>
 
-          <h2 class="font-serif text-4xl sm:text-6xl text-ivory leading-[1.05]">
+          <h2 class="font-instrument font-normal text-4xl sm:text-6xl tracking-[-0.02em] text-ivory leading-[1.05]">
             Hi, I'm <span class="italic text-champagneLight">Israel.</span>
           </h2>
 
@@ -710,21 +741,6 @@
       </div>
     </section>
 
-    <!-- ===================================================================== -->
-    <!-- 9. CLOSING PHILOSOPHY QUOTE & HIGH-IMPACT CONTACT SECTION             -->
-    <!-- ===================================================================== -->
-    <section class="py-20 sm:py-28 border-t border-hairline">
-      <div class="max-w-5xl mx-auto px-5 sm:px-8 text-center space-y-8">
-        <span class="inline-block font-serif text-5xl text-champagne leading-none">“</span>
-        <blockquote class="font-serif italic text-3xl sm:text-5xl text-ivory/95 leading-snug">
-          Technology gives us the brush, but taste, rhythm, and story decide whether the frame is remembered.
-        </blockquote>
-        <p class="font-display text-xs tracking-[0.28em] text-mutedIvory uppercase">
-          — ISRAEL EKPENYONG
-        </p>
-      </div>
-    </section>
-
     <section id="contact" class="pb-24 px-5 sm:px-8">
       <div class="max-w-7xl mx-auto">
         <div
@@ -735,11 +751,11 @@
             aria-hidden="true"
           ></div>
 
-          <p class="font-display text-xs tracking-[0.28em] text-champagne uppercase relative z-10">
-            START A PROJECT
+          <p class="font-mono text-[11px] tracking-[0.15em] text-champagne uppercase relative z-10">
+            04 / START A PROJECT
           </p>
 
-          <h2 class="font-serif text-4xl sm:text-6xl lg:text-7xl text-ivory leading-[1.04] max-w-3xl mx-auto relative z-10">
+          <h2 class="font-instrument font-normal text-4xl sm:text-6xl lg:text-7xl tracking-[-0.02em] text-ivory leading-[1.04] max-w-3xl mx-auto relative z-10">
             Let's make something <span class="italic text-champagneLight">extraordinary.</span>
           </h2>
 
@@ -820,11 +836,11 @@
         <div class="flex items-center gap-3">
           <span
             id="modalCategory"
-            class="px-3 py-1 rounded-full bg-champagne/15 border border-champagne/40 font-display text-[10px] tracking-[0.2em] text-champagne uppercase"
+            class="px-3 py-1 rounded-full bg-champagne/15 border border-champagne/40 font-mono text-[9px] tracking-[0.08em] text-champagne uppercase"
           >
             CATEGORY
           </span>
-          <span id="modalDuration" class="font-display text-xs tracking-[0.18em] text-mutedIvory uppercase">
+          <span id="modalDuration" class="font-mono text-xs tracking-[0.08em] text-mutedIvory uppercase">
             00:00
           </span>
         </div>
@@ -852,12 +868,12 @@
           <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-obsidian/40"></div>
 
           <!-- Simulated Cinema HUD Overlay -->
-          <div class="absolute top-4 left-4 right-4 flex items-center justify-between text-[10px] font-display tracking-[0.22em] text-ivory/80 uppercase">
+          <div class="absolute top-4 left-4 right-4 flex items-center justify-between text-[9px] font-mono tracking-[0.08em] text-ivory/80 uppercase">
             <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-obsidian/75 backdrop-blur-md">
               <span id="playStatusDot" class="w-2 h-2 rounded-full bg-champagne animate-ping"></span>
               <span id="playStatusLabel">PLAYING DIRECTOR'S CUT PREVIEW</span>
             </span>
-            <span id="modalAspect" class="px-3 py-1 rounded-full bg-obsidian/75 backdrop-blur-md">16:9</span>
+            <span id="modalAspect" class="px-3 py-1 rounded-full bg-obsidian/75 backdrop-blur-md font-mono tracking-[0.08em]">16:9</span>
           </div>
 
           <!-- Interactive Play/Pause Toggle Center Control -->
@@ -875,7 +891,7 @@
             <div class="w-full h-1.5 rounded-full bg-ivory/20 overflow-hidden">
               <div id="simProgressBar" class="h-full bg-champagne w-1/3 transition-all duration-300"></div>
             </div>
-            <div class="flex items-center justify-between text-[11px] font-display tracking-[0.18em] text-ivory/80">
+            <div class="flex items-center justify-between text-[10px] font-mono tracking-[0.08em] text-ivory/80">
               <span id="simTimecode">00:14 / 01:45</span>
               <span>24.00 FPS · COLOR GRADED</span>
             </div>
@@ -1096,10 +1112,10 @@
 
                 <!-- Top Badges -->
                 <div class="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between gap-2">
-                  <span class="px-3 py-1 rounded-full bg-obsidian/80 backdrop-blur-md border border-hairline font-display text-[10px] tracking-[0.2em] text-champagne uppercase">
+                  <span class="px-3 py-1 rounded-full bg-obsidian/80 backdrop-blur-md border border-hairline font-mono text-[9px] tracking-[0.08em] text-champagne uppercase">
                     ${project.category}
                   </span>
-                  <span class="px-2.5 py-1 rounded-full bg-obsidian/80 backdrop-blur-md font-display text-[10px] tracking-[0.16em] text-ivory/85 uppercase">
+                  <span class="px-2.5 py-1 rounded-full bg-obsidian/80 backdrop-blur-md font-mono text-[9px] tracking-[0.08em] text-ivory/85 uppercase">
                     ${project.aspect}
                   </span>
                 </div>
@@ -1116,7 +1132,7 @@
 
               <!-- Card Text Content -->
               <div class="p-6 space-y-2.5">
-                <div class="flex items-center justify-between text-[11px] font-display tracking-[0.2em] text-mutedIvory uppercase">
+                <div class="flex items-center justify-between text-[10px] font-mono tracking-[0.08em] text-mutedIvory uppercase">
                   <span>${project.subtitle}</span>
                   <span>${project.duration.split('·')[0]}</span>
                 </div>
@@ -1136,7 +1152,7 @@
                   .slice(0, 3)
                   .map(
                     (tool) =>
-                      `<span class="px-2.5 py-0.5 rounded-full bg-charcoal border border-hairline text-[10px] font-display tracking-[0.14em] text-ivory/75 uppercase">${tool}</span>`
+                      `<span class="px-2.5 py-0.5 rounded-full bg-charcoal border border-hairline text-[9px] font-mono tracking-[0.06em] text-ivory/75 uppercase">${tool}</span>`
                   )
                   .join('')}
               </div>
@@ -1260,7 +1276,7 @@
       document.getElementById('modalTools').innerHTML = item.tools
         .map(
           (tool) =>
-            `<span class="px-3 py-1 rounded-full bg-charcoal border border-champagne/30 font-display text-[10px] tracking-[0.16em] text-ivory uppercase">${tool}</span>`
+            `<span class="px-3 py-1 rounded-full bg-charcoal border border-champagne/30 font-mono text-[9px] tracking-[0.06em] text-ivory uppercase">${tool}</span>`
         )
         .join('');
 
