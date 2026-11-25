@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Israel Ekpenyong (I·E) — AI Filmmaker & Visual Storyteller</title>
+
+  <!-- Google Fonts: Cormorant Garamond (Editorial Serif), Space Grotesk & Inter (Geometric Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#0A0A0B',
+            charcoal: '#121215',
+            slateDark: '#19191E',
+            ivory: '#F4F1EA',
+            mutedIvory: '#A8A399',
+            champagne: '#D4AF37',
+            champagneLight: '#E8CC75',
+            hairline: 'rgba(244, 241, 234, 0.12)',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            display: ['"Space Grotesk"', 'sans-serif'],
+            sans: ['"Inter"', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* Custom Editorial Dark-Mode Enhancements & Animations */
+    :root {
+      --bg-obsidian: #0a0a0b;
+      --text-ivory: #f4f1ea;
+      --accent-champagne: #d4af37;
+    }
+
+    body {
+      background-color: var(--bg-obsidian);
+      color: var(--text-ivory);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Subtle Film Grain Overlay */
+    .film-grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 60;
+      opacity: 0.032;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* Infinite Horizontal Marquee */
+    @keyframes marqueeScroll {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .animate-marquee {
+      display: flex;
+      width: max-content;
+      animation: marqueeScroll 32s linear infinite;
+    }
+
+    .marquee-wrapper:hover .animate-marquee {
+      animation-play-state: paused;
+    }
+
+    /* Simulated Cinema Reel Progress & Ken Burns Zoom */
+    @keyframes kenBurnsSlow {
+      0% {
+        transform: scale(1) translate(0, 0);
+      }
+      50% {
+        transform: scale(1.07) translate(-1%, -1%);
+      }
+      100% {
+        transform: scale(1) translate(0, 0);
+      }
+    }
+
+    .ken-burns {
+      animation: kenBurnsSlow 18s ease-in-out infinite;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a0a0b;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2a2a30;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #d4af37;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-champagne selection:text-obsidian">
+  <!-- Subtle Cinema Film Grain -->
+  <div class="film-grain" aria-hidden="true"></div>
+
+  <!-- ===================================================================== -->
+  <!-- 1. STICKY GLASSMORPHIC TOP HEADER                                     -->
+  <!-- ===================================================================== -->
+  <header
+    id="siteHeader"
+    class="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-obsidian/75 backdrop-blur-xl border-b border-hairline"
+  >
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between gap-4">
+      <!-- Brand Monogram & Identity -->
+      <a href="#top" class="flex items-center gap-3.5 group focus:outline-none">
+        <div
+          class="w-11 h-11 rounded-full border border-champagne/60 bg-charcoal/90 flex items-center justify-center font-serif text-lg font-semibold tracking-widest text-champagne group-hover:bg-champagne group-hover:text-obsidian transition-colors duration-300"
+        >
+          I·E
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display text-xs sm:text-sm font-semibold tracking-[0.18em] text-ivory uppercase">
+            ISRAEL EKPENYONG
+          </span>
+          <span class="text-[10px] sm:text-[11px] tracking-[0.2em] text-mutedIvory uppercase">
+            AI FILMMAKER · VISUAL STORYTELLER
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-9" aria-label="Primary Navigation">
+        <a
+          href="#work"
+          class="text-xs font-display tracking-[0.22em] text-ivory/80 hover:text-champagne transition-colors uppercase"
+        >
+          WORK
+        </a>
+        <a
+          href="#expertise"
+          class="text-xs font-display tracking-[0.22em] text-ivory/80 hover:text-champagne transition-colors uppercase"
+        >
+          EXPERTISE
+        </a>
+        <a
+          href="#about"
+          class="text-xs font-display tracking-[0.22em] text-ivory/80 hover:text-champagne transition-colors uppercase"
+        >
+          ABOUT
+        </a>
+      </nav>
+
+      <!-- Desktop CTA + Mobile Hamburger -->
+      <div class="flex items-center gap-3">
+        <a
+          href="#contact"
+          class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-champagne text-obsidian font-display text-xs font-semibold tracking-[0.16em] uppercase hover:bg-champagneLight transition-all duration-300 shadow-[0_0_25px_rgba(212,175,55,0.22)]"
+        >
+          <span>LET'S TALK</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobileMenuBtn"
+          type="button"
+          aria-label="Toggle Menu"
+          aria-expanded="false"
+          class="md:hidden w-11 h-11 rounded-full border border-hairline bg-charcoal/80 flex flex-col items-center justify-center gap-1.5 text-ivory hover:border-champagne transition-colors"
+        >
+          <span id="bar1" class="w-5 h-[1.5px] bg-ivory transition-transform duration-300"></span>
+          <span id="bar2" class="w-5 h-[1.5px] bg-champagne transition-opacity duration-300"></span>
+          <span id="bar3" class="w-5 h-[1.5px] bg-ivory transition-transform duration-300"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Responsive Mobile Menu Drawer -->
+    <div
+      id="mobileMenu"
+      class="hidden md:hidden bg-charcoal/95 backdrop-blur-2xl border-b border-hairline px-6 py-7 space-y-5"
+    >
+      <div class="flex flex-col space-y-4">
+        <a
+          href="#work"
+          class="mobile-nav-link font-display text-sm tracking-[0.24em] text-ivory hover:text-champagne py-1 uppercase"
+        >
+          01 / WORK
+        </a>
+        <a
+          href="#expertise"
+          class="mobile-nav-link font-display text-sm tracking-[0.24em] text-ivory hover:text-champagne py-1 uppercase"
+        >
+          02 / EXPERTISE
+        </a>
+        <a
+          href="#about"
+          class="mobile-nav-link font-display text-sm tracking-[0.24em] text-ivory hover:text-champagne py-1 uppercase"
+        >
+          03 / ABOUT
+        </a>
+      </div>
+      <div class="pt-3 border-t border-hairline">
+        <a
+          href="#contact"
+          class="mobile-nav-link w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-champagne text-obsidian font-display text-xs font-semibold tracking-[0.18em] uppercase"
+        >
+          <span>LET'S TALK</span>
+          <span>↗</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="pt-20">
+    <!-- ===================================================================== -->
+    <!-- 2. FULL-HEIGHT HERO SECTION ('01 / THE CREATOR')                      -->
+    <!-- ===================================================================== -->
+    <section class="relative min-h-[calc(100vh-5rem)] flex items-center py-14 sm:py-20 overflow-hidden">
+      <!-- Ambient Champagne & Obsidian Radial Glows -->
+      <div
+        class="pointer-events-none absolute -top-24 -left-24 w-[480px] h-[480px] rounded-full bg-champagne/10 blur-[140px]"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="pointer-events-none absolute bottom-0 right-0 w-[520px] h-[520px] rounded-full bg-amber-900/15 blur-[160px]"
+        aria-hidden="true"
+      ></div>
+
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+        <!-- Left Editorial Copy Column -->
+        <div class="lg:col-span-7 space-y-7 z-10">
+          <!-- Eyebrow -->
+          <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-hairline bg-charcoal/70">
+            <span class="w-2 h-2 rounded-full bg-champagne animate-pulse"></span>
+            <span class="font-display text-[11px] tracking-[0.28em] text-champagne uppercase">
+              01 / THE CREATOR
+            </span>
+          </div>
+
+          <!-- Display Headline -->
+          <h1 class="font-serif text-5xl sm:text-7xl xl:text-[5.5rem] font-medium leading-[0.96] tracking-tight text-ivory">
+            Israel
+            <span class="block italic font-normal text-champagneLight">Ekpenyong.</span>
+          </h1>
+
+          <!-- Role Tags -->
+          <div class="flex flex-wrap items-center gap-3 font-display text-xs sm:text-sm tracking-[0.22em] text-ivory/90 uppercase">
+            <span>AI FILMMAKER</span>
+            <span class="text-champagne">✳</span>
+            <span>VISUAL STORYTELLER</span>
+          </div>
+
+          <!-- Positioning Statement -->
+          <p class="max-w-xl text-base sm:text-lg text-mutedIvory leading-relaxed font-light">
+            Directing cinema-grade worlds where generative AI meets disciplined editorial pacing, atmospheric sound
+            design, and intentional color grading—from mythic lore universes to high-velocity automotive narratives.
+          </p>
+
+          <!-- Dual CTAs -->
+          <div class="pt-2 flex flex-wrap items-center gap-4">
+            <a
+              href="#work"
+              class="inline-flex items-center gap-2.5 px-7 py-4 rounded-full bg-ivory text-obsidian font-display text-xs font-semibold tracking-[0.18em] uppercase hover:bg-champagne hover:text-obsidian transition-all duration-300"
+            >
+              <span>VIEW PORTFOLIO</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+
+            <a
+              href="#contact"
+              class="inline-flex items-center gap-2.5 px-7 py-4 rounded-full border border-ivory/25 bg-charcoal/60 text-ivory font-display text-xs font-semibold tracking-[0.18em] uppercase hover:border-champagne hover:text-champagne transition-all duration-300"
+            >
+              <span>LET'S WORK TOGETHER</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          <!-- Quick Reel Telemetry Strip -->
+          <div class="pt-6 border-t border-hairline grid grid-cols-3 gap-4 max-w-lg">
+            <div>
+              <p class="font-serif text-2xl sm:text-3xl text-ivory">24 FPS</p>
+              <p class="font-display text-[10px] tracking-[0.2em] text-mutedIvory uppercase mt-0.5">CINEMA CADENCE</p>
+            </div>
+            <div>
+              <p class="font-serif text-2xl sm:text-3xl text-champagne">2 WORLDS</p>
+              <p class="font-display text-[10px] tracking-[0.2em] text-mutedIvory uppercase mt-0.5">ORIGINAL CHANNELS</p>
+            </div>
+            <div>
+              <p class="font-serif text-2xl sm:text-3xl text-ivory">GLOBAL</p>
+              <p class="font-display text-[10px] tracking-[0.2em] text-mutedIvory uppercase mt-0.5">REMOTE DIRECTION</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Dramatic Portrait Frame Column -->
+        <div class="lg:col-span-5 relative">
+          <div
+            class="relative mx-auto max-w-md lg:max-w-none aspect-[4/5] rounded-3xl overflow-hidden border border-ivory/15 bg-charcoal shadow-2xl group"
+          >
+            <!-- Atmospheric Director Portrait Visual -->
+            <img
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=80"
+              onerror="this.onerror=null;this.src='https://placehold.co/800x1000/141418/D4AF37?text=ISRAEL+EKPENYONG';"
+              alt="Israel Ekpenyong — AI Filmmaker & Visual Storyteller"
+              class="w-full h-full object-cover object-center grayscale contrast-125 brightness-75 group-hover:scale-105 transition-transform duration-700"
+            />
+
+            <!-- Warm Chiaroscuro & Champagne Duotone Gradient Overlay -->
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/35 to-champagne/10 mix-blend-multiply"
+            ></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent"></div>
+
+            <!-- Viewfinder Frame Reticles -->
+            <div class="absolute top-5 left-5 right-5 flex items-center justify-between text-[10px] font-display tracking-[0.22em] text-ivory/75 uppercase">
+              <span class="inline-flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-red-500"></span> REC · RAW 4K
+              </span>
+              <span>I·E STUDIO</span>
+            </div>
+
+            <!-- Bottom Overlay Caption Card -->
+            <div class="absolute bottom-5 inset-x-5 p-4 sm:p-5 rounded-2xl bg-obsidian/80 backdrop-blur-md border border-hairline flex items-center justify-between gap-4">
+              <div>
+                <p class="font-display text-[10px] tracking-[0.24em] text-champagne uppercase">DIRECTOR'S REEL</p>
+                <p class="font-serif text-lg sm:text-xl text-ivory italic mt-0.5">
+                  Mythology, Machines & Motion
+                </p>
+              </div>
+              <button
+                type="button"
+                onclick="openProjectModal(0)"
+                aria-label="Play Featured Showreel"
+                class="w-11 h-11 shrink-0 rounded-full bg-champagne text-obsidian flex items-center justify-center hover:scale-105 transition-transform"
+              >
+                <svg class="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 3. INFINITE HORIZONTAL SCROLLING MARQUEE TICKER                       -->
+    <!-- ===================================================================== -->
+    <div
+      class="marquee-wrapper border-y border-hairline bg-charcoal/80 py-4 sm:py-5 overflow-hidden select-none"
+      aria-label="Core Specialties Marquee"
+    >
+      <div class="animate-marquee flex items-center">
+        <!-- Track 1 -->
+        <div class="flex items-center gap-8 px-4 font-display text-xs sm:text-sm tracking-[0.28em] text-ivory/90 uppercase whitespace-nowrap">
+          <span>AI FILMMAKING</span>
+          <span class="text-champagne">✳</span>
+          <span>VISUAL STORYTELLING</span>
+          <span class="text-champagne">✳</span>
+          <span>CINEMATIC LORE</span>
+          <span class="text-champagne">✳</span>
+          <span>AUTOMOTIVE CINEMA</span>
+          <span class="text-champagne">✳</span>
+          <span>BRANDED VISUALS</span>
+          <span class="text-champagne">✳</span>
+        </div>
+        <!-- Track 2 (Seamless Loop Duplicate) -->
+        <div class="flex items-center gap-8 px-4 font-display text-xs sm:text-sm tracking-[0.28em] text-ivory/90 uppercase whitespace-nowrap" aria-hidden="true">
+          <span>AI FILMMAKING</span>
+          <span class="text-champagne">✳</span>
+          <span>VISUAL STORYTELLING</span>
+          <span class="text-champagne">✳</span>
+          <span>CINEMATIC LORE</span>
+          <span class="text-champagne">✳</span>
+          <span>AUTOMOTIVE CINEMA</span>
+          <span class="text-champagne">✳</span>
+          <span>BRANDED VISUALS</span>
+          <span class="text-champagne">✳</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- 4. EDITORIAL APPROACH STATEMENT SECTION                               -->
+    <!-- ===================================================================== -->
+    <section class="py-20 sm:py-28 border-b border-hairline">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8">
+        <div class="max-w-4xl space-y-6">
+          <p class="font-display text-xs tracking-[0.28em] text-champagne uppercase">
+            THE APPROACH
+          </p>
+          <h2 class="font-serif text-4xl sm:text-6xl lg:text-[4.25rem] leading-[1.05] text-ivory">
+            Not just content.
+            <span class="italic text-champagneLight block sm:inline">Something worth watching.</span>
+          </h2>
+          <p class="text-mutedIvory text-base sm:text-lg max-w-2xl leading-relaxed font-light">
+            Generative tools can produce endless frames, but cinema lives in restraint—narrative tension, lens
+            consistency, rhythmic cuts, and atmospheric sound. Every piece is crafted like a short film first.
+          </p>
+        </div>
+
+        <!-- Horizontal Process Strip -->
+        <div class="mt-12 pt-8 border-t border-hairline grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div class="p-5 rounded-2xl bg-charcoal/60 border border-hairline flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-display tracking-[0.22em] text-champagne block">STEP 01</span>
+              <span class="font-display text-xs sm:text-sm tracking-[0.16em] text-ivory uppercase mt-1 block">
+                CREATIVE CONCEPT
+              </span>
+            </div>
+            <span class="text-champagne font-display text-base">→</span>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-charcoal/60 border border-hairline flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-display tracking-[0.22em] text-champagne block">STEP 02</span>
+              <span class="font-display text-xs sm:text-sm tracking-[0.16em] text-ivory uppercase mt-1 block">
+                AI GENERATION
+              </span>
+            </div>
+            <span class="text-champagne font-display text-base">→</span>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-charcoal/60 border border-hairline flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-display tracking-[0.22em] text-champagne block">STEP 03</span>
+              <span class="font-display text-xs sm:text-sm tracking-[0.16em] text-ivory uppercase mt-1 block">
+                EDIT & COLOR GRADE
+              </span>
+            </div>
+            <span class="text-champagne font-display text-base">→</span>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-charcoal/90 border border-champagne/40 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-display tracking-[0.22em] text-champagne block">STEP 04</span>
+              <span class="font-display text-xs sm:text-sm tracking-[0.16em] text-ivory uppercase mt-1 block">
+                FINAL FRAME
+              </span>
+            </div>
+            <span class="text-champagne font-display text-base">✦</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 5. FILTERABLE SELECTED WORKS PORTFOLIO GRID                           -->
+    <!-- ===================================================================== -->
+    <section id="work" class="py-20 sm:py-28">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        <!-- Section Header & Filter Bar -->
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+          <div class="space-y-3">
+            <p class="font-display text-xs tracking-[0.28em] text-champagne uppercase">
+              THE PORTFOLIO
+            </p>
+            <h2 class="font-serif text-4xl sm:text-6xl text-ivory">
+              Selected <span class="italic text-champagneLight">works.</span>
+            </h2>
+          </div>
+
+          <!-- Category Filter Pills -->
+          <div
+            id="filterBar"
+            role="group"
+            aria-label="Filter projects by category"
+            class="flex flex-wrap items-center gap-2.5"
+          >
+            <button
+              type="button"
+              data-filter="ALL"
+              class="filter-btn active px-4 py-2.5 rounded-full font-display text-[11px] tracking-[0.18em] uppercase transition-all bg-champagne text-obsidian font-semibold"
+            >
+              ALL (9)
+            </button>
+            <button
+              type="button"
+              data-filter="CINEMATIC LORE"
+              class="filter-btn px-4 py-2.5 rounded-full font-display text-[11px] tracking-[0.18em] uppercase transition-all border border-hairline bg-charcoal/70 text-ivory/80 hover:border-champagne/60 hover:text-ivory"
+            >
+              CINEMATIC LORE
+            </button>
+            <button
+              type="button"
+              data-filter="AUTOMOTIVE"
+              class="filter-btn px-4 py-2.5 rounded-full font-display text-[11px] tracking-[0.18em] uppercase transition-all border border-hairline bg-charcoal/70 text-ivory/80 hover:border-champagne/60 hover:text-ivory"
+            >
+              AUTOMOTIVE
+            </button>
+            <button
+              type="button"
+              data-filter="SHORT-FORM / REELS"
+              class="filter-btn px-4 py-2.5 rounded-full font-display text-[11px] tracking-[0.18em] uppercase transition-all border border-hairline bg-charcoal/70 text-ivory/80 hover:border-champagne/60 hover:text-ivory"
+            >
+              SHORT-FORM / REELS
+            </button>
+            <button
+              type="button"
+              data-filter="BRANDED & FASHION"
+              class="filter-btn px-4 py-2.5 rounded-full font-display text-[11px] tracking-[0.18em] uppercase transition-all border border-hairline bg-charcoal/70 text-ivory/80 hover:border-champagne/60 hover:text-ivory"
+            >
+              BRANDED & FASHION
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic Portfolio Grid -->
+        <div
+          id="portfolioGrid"
+          aria-live="polite"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7"
+        >
+          <!-- Populated dynamically via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 6. FLAGSHIP UNIVERSE SPOTLIGHT BANNER                                 -->
+    <!-- ===================================================================== -->
+    <section class="py-12 sm:py-20 px-5 sm:px-8">
+      <div class="max-w-7xl mx-auto">
+        <div
+          class="relative rounded-3xl overflow-hidden border border-champagne/30 bg-gradient-to-br from-charcoal via-[#141210] to-obsidian p-7 sm:p-12 lg:p-16 shadow-2xl"
+        >
+          <!-- Ambient Backlight -->
+          <div
+            class="pointer-events-none absolute -right-20 -top-20 w-96 h-96 rounded-full bg-champagne/15 blur-[120px]"
+            aria-hidden="true"
+          ></div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
+            <!-- Left Lore Narrative -->
+            <div class="lg:col-span-7 space-y-6">
+              <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-champagne/10 border border-champagne/30">
+                <span class="text-champagne text-xs">✦</span>
+                <span class="font-display text-[11px] tracking-[0.26em] text-champagne uppercase">
+                  A PERSONAL WORLD, BUILT FROM ZERO
+                </span>
+              </div>
+
+              <h2 class="font-serif text-4xl sm:text-6xl text-ivory leading-[1.04]">
+                Enochian <span class="italic text-champagneLight">Lore.</span>
+              </h2>
+
+              <p class="text-mutedIvory text-base sm:text-lg leading-relaxed font-light max-w-2xl">
+                An original dark-mythology visual universe exploring the Watchers, ancient celestial architecture, and
+                apocryphal chronicles. Built from scratch with consistent character seed engineering, custom voice
+                atmosphere, and theatrical color grading across both feature-length essays and vertical chapters.
+              </p>
+
+              <!-- Key Metrics Callouts -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                <div class="p-4 rounded-2xl bg-obsidian/70 border border-hairline">
+                  <p class="font-display text-xs tracking-[0.22em] text-champagne uppercase">
+                    MULTI-PLATFORM LORE UNIVERSE
+                  </p>
+                  <p class="text-sm text-ivory/85 mt-1">
+                    Unified visual canon across YouTube, Reels & Shorts
+                  </p>
+                </div>
+                <div class="p-4 rounded-2xl bg-obsidian/70 border border-hairline">
+                  <p class="font-display text-xs tracking-[0.22em] text-champagne uppercase">
+                    LONG-FORM + VERTICAL SERIES
+                  </p>
+                  <p class="text-sm text-ivory/85 mt-1">
+                    Deep-dive narrative chapters paired with viral hooks
+                  </p>
+                </div>
+              </div>
+
+              <div class="pt-2">
+                <button
+                  type="button"
+                  onclick="openProjectModal(0)"
+                  class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-champagne text-obsidian font-display text-xs font-semibold tracking-[0.18em] uppercase hover:bg-champagneLight transition-colors"
+                >
+                  <span>WATCH ENOCH – THE MOVIE PREVIEW</span>
+                  <span>↗</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Right Cinematic Artwork Frame -->
+            <div class="lg:col-span-5">
+              <div
+                onclick="openProjectModal(0)"
+                class="cursor-pointer group relative aspect-[4/3] rounded-2xl overflow-hidden border border-champagne/30 bg-obsidian shadow-xl"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1000&q=80"
+                  onerror="this.onerror=null;this.src='https://placehold.co/900x675/141210/D4AF37?text=ENOCHIAN+LORE';"
+                  alt="Enochian Lore — Ancient Celestial Monolith"
+                  class="w-full h-full object-cover brightness-75 contrast-125 group-hover:scale-105 transition-transform duration-700"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/20 to-transparent"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div
+                    class="w-16 h-16 rounded-full bg-obsidian/80 border border-champagne text-champagne flex items-center justify-center backdrop-blur-md group-hover:scale-110 group-hover:bg-champagne group-hover:text-obsidian transition-all duration-300"
+                  >
+                    <svg class="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+                    </svg>
+                  </div>
+                </div>
+                <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-[11px] font-display tracking-[0.2em] text-ivory uppercase">
+                  <span>FLAGSHIP SERIES · CHAPTER I</span>
+                  <span class="text-champagne">16:9 CINEMA</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 7. NUMBERED CREATIVE CAPABILITIES ('01' TO '04')                      -->
+    <!-- ===================================================================== -->
+    <section id="expertise" class="py-20 sm:py-28 border-t border-hairline">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        <div class="max-w-3xl mb-14 space-y-3">
+          <p class="font-display text-xs tracking-[0.28em] text-champagne uppercase">
+            WHAT I CREATE
+          </p>
+          <h2 class="font-serif text-4xl sm:text-6xl text-ivory">
+            Creative <span class="italic text-champagneLight">capabilities.</span>
+          </h2>
+        </div>
+
+        <!-- Numbered Accordion/Hover Rows -->
+        <div class="divide-y divide-hairline border-y border-hairline">
+          <!-- 01 -->
+          <div
+            class="group py-8 sm:py-10 px-4 sm:px-6 rounded-2xl hover:bg-charcoal/70 transition-colors duration-300 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center"
+          >
+            <div class="lg:col-span-2 font-serif text-3xl sm:text-4xl text-champagne italic">
+              01
+            </div>
+            <div class="lg:col-span-5">
+              <h3 class="font-display text-xl sm:text-2xl tracking-[0.08em] text-ivory group-hover:text-champagneLight transition-colors uppercase">
+                AI FILM & CINEMATIC LORE
+              </h3>
+            </div>
+            <div class="lg:col-span-5">
+              <p class="text-mutedIvory text-sm sm:text-base leading-relaxed font-light">
+                World-building, consistent character casting, mythos trailers, and long-form documentary storytelling
+                engineered with Veo, Kling, Runway, and Midjourney.
+              </p>
+            </div>
+          </div>
+
+          <!-- 02 -->
+          <div
+            class="group py-8 sm:py-10 px-4 sm:px-6 rounded-2xl hover:bg-charcoal/70 transition-colors duration-300 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center"
+          >
+            <div class="lg:col-span-2 font-serif text-3xl sm:text-4xl text-champagne italic">
+              02
+            </div>
+            <div class="lg:col-span-5">
+              <h3 class="font-display text-xl sm:text-2xl tracking-[0.08em] text-ivory group-hover:text-champagneLight transition-colors uppercase">
+                AUTOMOTIVE & PRODUCT VISUALS
+              </h3>
+            </div>
+            <div class="lg:col-span-5">
+              <p class="text-mutedIvory text-sm sm:text-base leading-relaxed font-light">
+                Precision mechanical storytelling, heritage car documentaries, and high-spec commercial spots that
+                capture metal reflections, motion blur, and engineering soul.
+              </p>
+            </div>
+          </div>
+
+          <!-- 03 -->
+          <div
+            class="group py-8 sm:py-10 px-4 sm:px-6 rounded-2xl hover:bg-charcoal/70 transition-colors duration-300 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center"
+          >
+            <div class="lg:col-span-2 font-serif text-3xl sm:text-4xl text-champagne italic">
+              03
+            </div>
+            <div class="lg:col-span-5">
+              <h3 class="font-display text-xl sm:text-2xl tracking-[0.08em] text-ivory group-hover:text-champagneLight transition-colors uppercase">
+                SHORT-FORM & MICRO-DRAMAS
+              </h3>
+            </div>
+            <div class="lg:col-span-5">
+              <p class="text-mutedIvory text-sm sm:text-base leading-relaxed font-light">
+                Scroll-stopping 9:16 narrative hooks, episodic micro-dramas, and viral historical/mechanical stories
+                paced for high retention across Reels, Shorts, and TikTok.
+              </p>
+            </div>
+          </div>
+
+          <!-- 04 -->
+          <div
+            class="group py-8 sm:py-10 px-4 sm:px-6 rounded-2xl hover:bg-charcoal/70 transition-colors duration-300 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center"
+          >
+            <div class="lg:col-span-2 font-serif text-3xl sm:text-4xl text-champagne italic">
+              04
+            </div>
+            <div class="lg:col-span-5">
+              <h3 class="font-display text-xl sm:text-2xl tracking-[0.08em] text-ivory group-hover:text-champagneLight transition-colors uppercase">
+                CREATIVE DIRECTION & POST
+              </h3>
+            </div>
+            <div class="lg:col-span-5">
+              <p class="text-mutedIvory text-sm sm:text-base leading-relaxed font-light">
+                End-to-end visual direction, narrative scripting, DaVinci Resolve color grading, CapCut dynamic
+                montage, and layered foley/soundscapes that unify every frame.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5-Step Pipeline Bar -->
+        <div class="mt-12 p-6 sm:p-8 rounded-3xl bg-charcoal/70 border border-hairline">
+          <p class="font-display text-[11px] tracking-[0.26em] text-mutedIvory uppercase mb-5 text-center sm:text-left">
+            PRODUCTION PIPELINE
+          </p>
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-4">
+            <div class="px-4 py-3.5 rounded-2xl bg-obsidian border border-hairline text-center">
+              <span class="block text-[10px] font-display tracking-[0.2em] text-champagne">01</span>
+              <span class="font-display text-xs tracking-[0.18em] text-ivory uppercase mt-1 block">IDEATION</span>
+            </div>
+            <div class="px-4 py-3.5 rounded-2xl bg-obsidian border border-hairline text-center">
+              <span class="block text-[10px] font-display tracking-[0.2em] text-champagne">02</span>
+              <span class="font-display text-xs tracking-[0.18em] text-ivory uppercase mt-1 block">VISUALS</span>
+            </div>
+            <div class="px-4 py-3.5 rounded-2xl bg-obsidian border border-hairline text-center">
+              <span class="block text-[10px] font-display tracking-[0.2em] text-champagne">03</span>
+              <span class="font-display text-xs tracking-[0.18em] text-ivory uppercase mt-1 block">MOTION</span>
+            </div>
+            <div class="px-4 py-3.5 rounded-2xl bg-obsidian border border-hairline text-center">
+              <span class="block text-[10px] font-display tracking-[0.2em] text-champagne">04</span>
+              <span class="font-display text-xs tracking-[0.18em] text-ivory uppercase mt-1 block">SOUND & GRADE</span>
+            </div>
+            <div class="col-span-2 sm:col-span-1 px-4 py-3.5 rounded-2xl bg-champagne/15 border border-champagne/50 text-center">
+              <span class="block text-[10px] font-display tracking-[0.2em] text-champagne">05</span>
+              <span class="font-display text-xs tracking-[0.18em] text-champagneLight uppercase mt-1 block">DELIVERY</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 8. ABOUT SECTION ('BEHIND THE WORK — Hi, I'm Israel.')                -->
+    <!-- ===================================================================== -->
+    <section id="about" class="py-20 sm:py-28 border-t border-hairline bg-charcoal/35">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Left Editorial Portrait Card -->
+        <div class="lg:col-span-5">
+          <div class="relative aspect-[4/5] max-w-md mx-auto rounded-3xl overflow-hidden border border-hairline bg-charcoal shadow-2xl">
+            <img
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80"
+              onerror="this.onerror=null;this.src='https://placehold.co/800x1000/121215/F4F1EA?text=ISRAEL+E.';"
+              alt="Israel Ekpenyong — Creative Director & AI Filmmaker"
+              class="w-full h-full object-cover grayscale contrast-125 brightness-90"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent"></div>
+            <div class="absolute bottom-5 left-5 right-5 flex items-center justify-between">
+              <span class="px-3.5 py-1.5 rounded-full bg-obsidian/85 backdrop-blur-md border border-hairline font-display text-[10px] tracking-[0.22em] text-champagne uppercase">
+                DIRECTOR · EDITOR
+              </span>
+              <span class="font-serif italic text-ivory/90 text-base">I·E Studio</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Bio & Metadata Grid -->
+        <div class="lg:col-span-7 space-y-7">
+          <p class="font-display text-xs tracking-[0.28em] text-champagne uppercase">
+            BEHIND THE WORK
+          </p>
+
+          <h2 class="font-serif text-4xl sm:text-6xl text-ivory leading-[1.05]">
+            Hi, I'm <span class="italic text-champagneLight">Israel.</span>
+          </h2>
+
+          <div class="space-y-4 text-mutedIvory text-base sm:text-lg leading-relaxed font-light">
+            <p>
+              I'm an AI filmmaker, visual storyteller, and video editor obsessed with how modern generative cinema can
+              evoke genuine human awe. My work bridges deep-lore mythological worlds, heritage automotive engineering,
+              and high-impact editorial campaigns.
+            </p>
+            <p>
+              Whether directing a 16-minute rotary engine documentary for <span class="text-ivory">The Rolling Chassis</span>,
+              building the apocryphal universe of <span class="text-ivory">Enochian Lore</span>, or crafting bespoke
+              visuals for international brands, I treat every second of screen time with theatrical discipline.
+            </p>
+          </div>
+
+          <!-- Metadata Grid -->
+          <div class="pt-4 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="p-5 rounded-2xl bg-obsidian border border-hairline">
+              <p class="font-display text-[10px] tracking-[0.24em] text-champagne uppercase">
+                BASED IN
+              </p>
+              <p class="font-serif text-xl text-ivory mt-1.5">
+                Chișinău, Moldova
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-obsidian border border-hairline">
+              <p class="font-display text-[10px] tracking-[0.24em] text-champagne uppercase">
+                WORKING WITH
+              </p>
+              <p class="font-serif text-xl text-ivory mt-1.5">
+                Clients Worldwide / Remote
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-obsidian border border-hairline">
+              <p class="font-display text-[10px] tracking-[0.24em] text-champagne uppercase">
+                CHANNELS
+              </p>
+              <p class="font-serif text-lg text-ivory mt-1.5 leading-snug">
+                Enochian Lore · The Rolling Chassis
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 9. CLOSING PHILOSOPHY QUOTE & HIGH-IMPACT CONTACT SECTION             -->
+    <!-- ===================================================================== -->
+    <section class="py-20 sm:py-28 border-t border-hairline">
+      <div class="max-w-5xl mx-auto px-5 sm:px-8 text-center space-y-8">
+        <span class="inline-block font-serif text-5xl text-champagne leading-none">“</span>
+        <blockquote class="font-serif italic text-3xl sm:text-5xl text-ivory/95 leading-snug">
+          Technology gives us the brush, but taste, rhythm, and story decide whether the frame is remembered.
+        </blockquote>
+        <p class="font-display text-xs tracking-[0.28em] text-mutedIvory uppercase">
+          — ISRAEL EKPENYONG
+        </p>
+      </div>
+    </section>
+
+    <section id="contact" class="pb-24 px-5 sm:px-8">
+      <div class="max-w-7xl mx-auto">
+        <div
+          class="rounded-3xl border border-champagne/35 bg-gradient-to-b from-charcoal to-obsidian p-8 sm:p-14 lg:p-20 text-center space-y-8 relative overflow-hidden"
+        >
+          <div
+            class="pointer-events-none absolute inset-x-0 -top-24 mx-auto w-[500px] h-[250px] rounded-full bg-champagne/15 blur-[120px]"
+            aria-hidden="true"
+          ></div>
+
+          <p class="font-display text-xs tracking-[0.28em] text-champagne uppercase relative z-10">
+            START A PROJECT
+          </p>
+
+          <h2 class="font-serif text-4xl sm:text-6xl lg:text-7xl text-ivory leading-[1.04] max-w-3xl mx-auto relative z-10">
+            Let's make something <span class="italic text-champagneLight">extraordinary.</span>
+          </h2>
+
+          <p class="text-mutedIvory text-base sm:text-lg max-w-xl mx-auto font-light relative z-10">
+            Available for AI film direction, branded visual campaigns, automotive storytelling, and retained short-form
+            content production worldwide.
+          </p>
+
+          <!-- Direct Email & Portfolio Action Buttons -->
+          <div class="pt-3 flex flex-wrap items-center justify-center gap-4 relative z-10">
+            <a
+              href="mailto:israeljaxson@gmail.com"
+              class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-champagne text-obsidian font-display text-xs sm:text-sm font-semibold tracking-[0.16em] uppercase hover:bg-champagneLight transition-all shadow-[0_0_30px_rgba(212,175,55,0.25)]"
+            >
+              <span>israeljaxson@gmail.com</span>
+              <span>↗</span>
+            </a>
+
+            <button
+              type="button"
+              id="copyEmailBtn"
+              onclick="copyEmailToClipboard()"
+              class="inline-flex items-center gap-2 px-6 py-4 rounded-full border border-hairline bg-obsidian/80 text-ivory font-display text-xs tracking-[0.18em] uppercase hover:border-champagne hover:text-champagne transition-colors"
+            >
+              <span id="copyEmailText">COPY EMAIL</span>
+            </button>
+
+            <a
+              href="https://videiro.com/p/israel"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-6 py-4 rounded-full border border-hairline bg-obsidian/80 text-ivory font-display text-xs tracking-[0.18em] uppercase hover:border-champagne hover:text-champagne transition-colors"
+            >
+              <span>videiro.com/p/israel</span>
+              <span>↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- MINIMAL FOOTER                                                        -->
+  <!-- ===================================================================== -->
+  <footer class="border-t border-hairline bg-obsidian py-10 px-5 sm:px-8">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+      <!-- Monogram & Copyright -->
+      <div class="flex items-center gap-3.5">
+        <span
+          class="w-9 h-9 rounded-full border border-champagne/50 flex items-center justify-center font-serif text-sm font-semibold text-champagne"
+        >
+          I·E
+        </span>
+        <span class="font-display text-xs tracking-[0.2em] text-mutedIvory uppercase">
+          © 2026 ISRAEL EKPENYONG. ALL RIGHTS RESERVED.
+        </span>
+      </div>
+
+      <!-- Channel & Archive Links -->
+      <div class="flex flex-wrap items-center justify-center gap-6 font-display text-[11px] tracking-[0.2em] text-ivory/80 uppercase">
+        <a href="#work" onclick="filterFromFooter('CINEMATIC LORE')" class="hover:text-champagne transition-colors">
+          ENOCHIAN LORE
+        </a>
+        <a href="#work" onclick="filterFromFooter('AUTOMOTIVE')" class="hover:text-champagne transition-colors">
+          THE ROLLING CHASSIS
+        </a>
+        <a
+          href="https://videiro.com/p/israel"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-champagne transition-colors"
+        >
+          VIDEIRO REEL ↗
+        </a>
+        <a
+          href="#top"
+          class="px-3.5 py-1.5 rounded-full border border-hairline hover:border-champagne text-champagne transition-colors"
+        >
+          TOP ↑
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================================================================== -->
+  <!-- INTERACTIVE VIDEO / STORY MODAL PLAYER                                -->
+  <!-- ===================================================================== -->
+  <div
+    id="projectModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-obsidian/90 backdrop-blur-xl"
+  >
+    <div
+      class="relative w-full max-w-4xl rounded-3xl border border-ivory/15 bg-charcoal overflow-hidden shadow-2xl max-h-[92vh] flex flex-col"
+    >
+      <!-- Modal Top Header Bar -->
+      <div class="px-6 py-4 border-b border-hairline flex items-center justify-between gap-4 bg-obsidian/60">
+        <div class="flex items-center gap-3">
+          <span
+            id="modalCategory"
+            class="px-3 py-1 rounded-full bg-champagne/15 border border-champagne/40 font-display text-[10px] tracking-[0.2em] text-champagne uppercase"
+          >
+            CATEGORY
+          </span>
+          <span id="modalDuration" class="font-display text-xs tracking-[0.18em] text-mutedIvory uppercase">
+            00:00
+          </span>
+        </div>
+
+        <button
+          type="button"
+          id="closeModalBtn"
+          aria-label="Close Preview Modal"
+          class="w-9 h-9 rounded-full border border-hairline bg-charcoal text-ivory hover:border-champagne hover:text-champagne flex items-center justify-center transition-colors"
+        >
+          ✕
+        </button>
+      </div>
+
+      <!-- Scrollable Modal Body -->
+      <div class="overflow-y-auto p-6 sm:p-8 space-y-6">
+        <!-- Simulated Cinema Player Stage -->
+        <div class="relative aspect-video w-full rounded-2xl overflow-hidden bg-obsidian border border-hairline group">
+          <img
+            id="modalImage"
+            src=""
+            alt="Project Frame Preview"
+            class="w-full h-full object-cover ken-burns brightness-90"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-obsidian/40"></div>
+
+          <!-- Simulated Cinema HUD Overlay -->
+          <div class="absolute top-4 left-4 right-4 flex items-center justify-between text-[10px] font-display tracking-[0.22em] text-ivory/80 uppercase">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-obsidian/75 backdrop-blur-md">
+              <span id="playStatusDot" class="w-2 h-2 rounded-full bg-champagne animate-ping"></span>
+              <span id="playStatusLabel">PLAYING DIRECTOR'S CUT PREVIEW</span>
+            </span>
+            <span id="modalAspect" class="px-3 py-1 rounded-full bg-obsidian/75 backdrop-blur-md">16:9</span>
+          </div>
+
+          <!-- Interactive Play/Pause Toggle Center Control -->
+          <button
+            type="button"
+            id="toggleSimPlayBtn"
+            aria-label="Toggle Simulated Playback"
+            class="absolute inset-0 m-auto w-16 h-16 rounded-full bg-obsidian/75 border border-champagne/70 text-champagne flex items-center justify-center opacity-90 hover:scale-105 hover:bg-champagne hover:text-obsidian transition-all"
+          >
+            <span id="simPlayIcon" class="font-display text-sm font-bold tracking-widest">❚❚</span>
+          </button>
+
+          <!-- Bottom Timecode Scrubber Bar -->
+          <div class="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-obsidian to-transparent space-y-2">
+            <div class="w-full h-1.5 rounded-full bg-ivory/20 overflow-hidden">
+              <div id="simProgressBar" class="h-full bg-champagne w-1/3 transition-all duration-300"></div>
+            </div>
+            <div class="flex items-center justify-between text-[11px] font-display tracking-[0.18em] text-ivory/80">
+              <span id="simTimecode">00:14 / 01:45</span>
+              <span>24.00 FPS · COLOR GRADED</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Brief & Craft Details -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 pt-2">
+          <div class="md:col-span-8 space-y-3">
+            <h3 id="modalTitle" class="font-serif text-3xl sm:text-4xl text-ivory">
+              Project Title
+            </h3>
+            <p id="modalBrief" class="text-mutedIvory text-sm sm:text-base leading-relaxed font-light">
+              Project description goes here.
+            </p>
+          </div>
+
+          <div class="md:col-span-4 space-y-4 p-5 rounded-2xl bg-obsidian/80 border border-hairline">
+            <div>
+              <p class="font-display text-[10px] tracking-[0.24em] text-champagne uppercase">
+                TOOLS & PIPELINE
+              </p>
+              <div id="modalTools" class="flex flex-wrap gap-2 mt-2.5">
+                <!-- Tool tags injected via JS -->
+              </div>
+            </div>
+
+            <div class="pt-3 border-t border-hairline">
+              <p class="font-display text-[10px] tracking-[0.24em] text-champagne uppercase">
+                CRAFT NOTES
+              </p>
+              <p id="modalCraft" class="text-xs text-ivory/85 leading-relaxed mt-1.5">
+                Craft notes go here.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- JAVASCRIPT: PORTFOLIO DATA, FILTERING, MODAL PLAYER & INTERACTIONS    -->
+  <!-- ===================================================================== -->
+  <script>
+    // Curated Portfolio Projects for Israel Ekpenyong
+    const projects = [
+      {
+        id: 0,
+        title: 'Enoch – The Movie',
+        subtitle: 'Mythology & Apocryphal Lore',
+        category: 'CINEMATIC LORE',
+        duration: '04:18 · TRAILER / CHAPTER I',
+        aspect: '16:9 ANAMORPHIC',
+        image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1000&q=80',
+        fallback: 'https://placehold.co/900x600/141210/D4AF37?text=ENOCH+-+THE+MOVIE',
+        brief:
+          'An atmospheric AI cinema adaptation chronicling the ancient visions of Enoch, fallen Watchers, and towering antediluvian citadels. Engineered with multi-shot character consistency, deep resonant narration, and theatrical chiaroscuro lighting.',
+        tools: ['Veo', 'Midjourney', 'Runway Gen-3', 'DaVinci Resolve'],
+        craft:
+          'Custom seed-locked character sheets paired with bespoke DaVinci Resolve film emulation LUTs and sub-bass spatial sound design.',
+      },
+      {
+        id: 1,
+        title: 'Wankel: The Rotary Revolution',
+        subtitle: '16-Min Automotive Documentary',
+        category: 'AUTOMOTIVE',
+        duration: '16:24 · LONG-FORM DOC',
+        aspect: '16:9 CINEMA',
+        image: 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=1000&q=80',
+        fallback: 'https://placehold.co/900x600/121417/D4AF37?text=WANKEL+ROTARY+DOC',
+        brief:
+          'Produced for The Rolling Chassis channel—a 16-minute visual deep dive tracing Felix Wankel’s epitrochoid combustion dream from post-war German prototypes to Mazda’s Le Mans-winning 787B.',
+        tools: ['Kling', 'Midjourney', 'DaVinci Resolve', 'CapCut'],
+        craft:
+          'Blends AI-reconstructed 1950s engineering workshops, cutaway rotor animations, and high-RPM exhaust foley.',
+      },
+      {
+        id: 2,
+        title: '1936 Hidden Headlights',
+        subtitle: 'Viral Automotive Short',
+        category: 'SHORT-FORM / REELS',
+        duration: '00:58 · VIRAL SHORT',
+        aspect: '9:16 VERTICAL',
+        image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80',
+        fallback: 'https://placehold.co/900x600/141418/D4AF37?text=1936+HIDDEN+HEADLIGHTS',
+        brief:
+          'A high-retention vertical story uncovering the Art Deco Cord 810—the world’s first production car with hand-cranked pop-up headlights—paced for maximum 3-second hook retention.',
+        tools: ['Kling', 'Runway', 'CapCut', 'DaVinci Resolve'],
+        craft:
+          'Tight 1.8-second visual cut cadence synchronized to mechanical latch foley and warm 1930s Kodachrome grading.',
+      },
+      {
+        id: 3,
+        title: 'Sienna Grey — Editorial Lookbook',
+        subtitle: 'Fashion & Lifestyle Visuals',
+        category: 'BRANDED & FASHION',
+        duration: '01:15 · CAMPAIGN FILM',
+        aspect: '4:5 EDITORIAL',
+        image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1000&q=80',
+        fallback: 'https://placehold.co/900x600/181615/D4AF37?text=SIENNA+GREY+LOOKBOOK',
+        brief:
+          'Monochrome-to-champagne luxury fashion film showcasing architectural tailoring against brutalist limestone galleries. Crafted without physical location shoots while preserving tactile fabric weave.',
+        tools: ['Midjourney', 'Veo', 'Runway', 'DaVinci Resolve'],
+        craft:
+          'Controlled camera dolly motion prompts paired with soft halation glow and editorial serif title cards.',
+      },
+      {
+        id: 4,
+        title: 'Monolith Cinema Reels',
+        subtitle: 'Micro-Drama Series Hooks',
+        category: 'SHORT-FORM / REELS',
+        duration: '00:45 · EPISODIC REEL',
+        aspect: '9:16 VERTICAL',
+        image: 'https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?auto=format&fit=crop&w=1000&q=80',
+        fallback: 'https://placehold.co/900x600/0F1014/D4AF37?text=MONOLITH+CINEMA+REELS',
+        brief:
+          'A serialized sci-fi micro-drama anthology designed for social feeds—each 45-second installment delivers a self-contained mystery around obsidian monoliths appearing across Earth.',
+        tools: ['Veo', 'Kling', 'CapCut', 'Midjourney'],
+        craft:
+          'Atmospheric scale contrast, tension risers, and cliffhanger framing engineered for repeat watch loops.',
+      },
+      {
+        id: 5,
+        title: 'The Watchers: Flood Chronicles',
+        subtitle: 'Enochian Lore — Chapter II',
+        category: 'CINEMATIC LORE',
+        duration: '06:40 · LORE EPISODE',
+        aspect: '16:9 ANAMORPHIC',
+        image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=80',
+        fallback: 'https://placehold.co/900x600/121110/D4AF37?text=THE+WATCHERS+CHRONICLES',
+        brief:
+          'Second installment in the Enochian Lore universe depicting Mount Hermon’s descent, forged celestial metals, and the impending deluge with sweeping aerial cinematography.',
+        tools: ['Veo', 'Midjourney', 'DaVinci Resolve'],
+        craft:
+          'Volumetric storm lighting, consistent character wardrobe across 40+ generated shots, and orchestral score pacing.',
+      },
+      {
+        id: 6,
+        title: 'Silver Arrows: 1937 Speed Record',
+        subtitle: 'Heritage Motorsport Film',
+        category: 'AUTOMOTIVE',
+        duration: '03:12 · SHORT FILM',
+        aspect: '16:9 CINEMA',
+        image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1000&q=80',
+        fallback: 'https://placehold.co/900x600/131416/D4AF37?text=SILVER+ARROWS+1937',
+        brief:
+          'Recreating the visceral 432 km/h Autobahn speed runs of streamlined 1930s Grand Prix machines with period-accurate aluminum bodywork and cockpit POV immersion.',
+        tools: ['Kling', 'Runway', 'DaVinci Resolve'],
+        craft:
+          'High-velocity tracking shots, metallic specular highlights, and vintage newsreel audio restoration.',
+      },
+      {
+        id: 7,
+        title: 'Aurelia Horology — Nocturne',
+        subtitle: 'Luxury Timepiece Commercial',
+        category: 'BRANDED & FASHION',
+        duration: '00:35 · SPEC COMMERCIAL',
+        aspect: '16:9 COMMERCIAL',
+        image: 'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=1000&q=80',
+        fallback: 'https://placehold.co/900x600/151310/D4AF37?text=AURELIA+HOROLOGY',
+        brief:
+          'Macro-lens tourbillon escapement choreography bathed in liquid gold reflections and deep obsidian shadows for a haute-horlogerie brand concept.',
+        tools: ['Midjourney', 'Veo', 'DaVinci Resolve'],
+        craft:
+          'Precision macro lighting continuity, mechanical tick foley synchronization, and champagne gold color curves.',
+      },
+      {
+        id: 8,
+        title: 'Forgotten Engines in 60 Seconds',
+        subtitle: 'The Rolling Chassis Shorts',
+        category: 'SHORT-FORM / REELS',
+        duration: '01:00 · SERIES PILOT',
+        aspect: '9:16 VERTICAL',
+        image: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1000&q=80',
+        fallback: 'https://placehold.co/900x600/111215/D4AF37?text=FORGOTTEN+ENGINES',
+        brief:
+          'Fast-paced vertical series spotlighting radical sleeve-valve, turbine, and radial automotive powerplants that defied convention.',
+        tools: ['Kling', 'CapCut', 'Midjourney'],
+        craft:
+          'Kinetic typography overlays, crisp mechanical sound design, and high-contrast studio rim lighting.',
+      },
+    ];
+
+    const portfolioGrid = document.getElementById('portfolioGrid');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+
+    // Render Portfolio Cards based on active category
+    function renderProjects(filterCategory = 'ALL') {
+      const filtered =
+        filterCategory === 'ALL'
+          ? projects
+          : projects.filter((item) => item.category === filterCategory);
+
+      portfolioGrid.innerHTML = filtered
+        .map(
+          (project) => `
+          <article
+            onclick="openProjectModal(${project.id})"
+            class="group cursor-pointer rounded-3xl overflow-hidden border border-hairline bg-charcoal/75 hover:border-champagne/60 transition-all duration-500 flex flex-col justify-between shadow-lg hover:-translate-y-1"
+          >
+            <div>
+              <!-- Thumbnail Frame -->
+              <div class="relative aspect-[16/10] overflow-hidden bg-obsidian">
+                <img
+                  src="${project.image}"
+                  onerror="this.onerror=null;this.src='${project.fallback}';"
+                  alt="${project.title}"
+                  loading="lazy"
+                  class="w-full h-full object-cover brightness-85 contrast-110 group-hover:scale-105 transition-transform duration-700"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/20 to-transparent"></div>
+
+                <!-- Top Badges -->
+                <div class="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between gap-2">
+                  <span class="px-3 py-1 rounded-full bg-obsidian/80 backdrop-blur-md border border-hairline font-display text-[10px] tracking-[0.2em] text-champagne uppercase">
+                    ${project.category}
+                  </span>
+                  <span class="px-2.5 py-1 rounded-full bg-obsidian/80 backdrop-blur-md font-display text-[10px] tracking-[0.16em] text-ivory/85 uppercase">
+                    ${project.aspect}
+                  </span>
+                </div>
+
+                <!-- Center Hover Play Button -->
+                <div class="absolute inset-0 flex items-center justify-center opacity-85 group-hover:opacity-100 transition-opacity">
+                  <div class="w-12 h-12 rounded-full bg-obsidian/80 border border-champagne/70 text-champagne flex items-center justify-center backdrop-blur-md group-hover:bg-champagne group-hover:text-obsidian group-hover:scale-110 transition-all duration-300">
+                    <svg class="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card Text Content -->
+              <div class="p-6 space-y-2.5">
+                <div class="flex items-center justify-between text-[11px] font-display tracking-[0.2em] text-mutedIvory uppercase">
+                  <span>${project.subtitle}</span>
+                  <span>${project.duration.split('·')[0]}</span>
+                </div>
+                <h3 class="font-serif text-2xl sm:text-[1.7rem] text-ivory group-hover:text-champagneLight transition-colors leading-snug">
+                  ${project.title}
+                </h3>
+                <p class="text-sm text-mutedIvory font-light line-clamp-2 leading-relaxed">
+                  ${project.brief}
+                </p>
+              </div>
+            </div>
+
+            <!-- Card Footer Tools Strip -->
+            <div class="px-6 py-4 border-t border-hairline flex items-center justify-between gap-2 bg-obsidian/40">
+              <div class="flex flex-wrap gap-1.5">
+                ${project.tools
+                  .slice(0, 3)
+                  .map(
+                    (tool) =>
+                      `<span class="px-2.5 py-0.5 rounded-full bg-charcoal border border-hairline text-[10px] font-display tracking-[0.14em] text-ivory/75 uppercase">${tool}</span>`
+                  )
+                  .join('')}
+              </div>
+              <span class="font-display text-[11px] tracking-[0.18em] text-champagne uppercase group-hover:translate-x-0.5 transition-transform">
+                WATCH ↗
+              </span>
+            </div>
+          </article>
+        `
+        )
+        .join('');
+    }
+
+    // Filter Button Click Handling
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach((b) => {
+          b.classList.remove('active', 'bg-champagne', 'text-obsidian', 'font-semibold');
+          b.classList.add('border', 'border-hairline', 'bg-charcoal/70', 'text-ivory/80');
+        });
+
+        btn.classList.add('active', 'bg-champagne', 'text-obsidian', 'font-semibold');
+        btn.classList.remove('border', 'border-hairline', 'bg-charcoal/70', 'text-ivory/80');
+
+        renderProjects(btn.dataset.filter);
+      });
+    });
+
+    // Helper for footer quick category jumps
+    function filterFromFooter(category) {
+      const targetBtn = Array.from(filterButtons).find((b) => b.dataset.filter === category);
+      if (targetBtn) targetBtn.click();
+    }
+
+    // =====================================================================
+    // INTERACTIVE VIDEO / STORY MODAL LOGIC
+    // =====================================================================
+    const projectModal = document.getElementById('projectModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const toggleSimPlayBtn = document.getElementById('toggleSimPlayBtn');
+    const simProgressBar = document.getElementById('simProgressBar');
+    const simTimecode = document.getElementById('simTimecode');
+    const simPlayIcon = document.getElementById('simPlayIcon');
+    const playStatusLabel = document.getElementById('playStatusLabel');
+    const playStatusDot = document.getElementById('playStatusDot');
+
+    let simInterval = null;
+    let simPlaying = true;
+    let simPercent = 22;
+
+    function startSimPlayback() {
+      clearInterval(simInterval);
+      simPlaying = true;
+      simPlayIcon.textContent = '❚❚';
+      playStatusLabel.textContent = "PLAYING DIRECTOR'S CUT PREVIEW";
+      playStatusDot.classList.add('animate-ping');
+
+      simInterval = setInterval(() => {
+        simPercent += 1;
+        if (simPercent > 100) simPercent = 0;
+        simProgressBar.style.width = `${simPercent}%`;
+        const secs = Math.floor((simPercent / 100) * 105);
+        const mins = String(Math.floor(secs / 60)).padStart(2, '0');
+        const remSecs = String(secs % 60).padStart(2, '0');
+        simTimecode.textContent = `${mins}:${remSecs} / 01:45`;
+      }, 450);
+    }
+
+    function pauseSimPlayback() {
+      clearInterval(simInterval);
+      simPlaying = false;
+      simPlayIcon.textContent = '▶';
+      playStatusLabel.textContent = 'FRAME PAUSED';
+      playStatusDot.classList.remove('animate-ping');
+    }
+
+    toggleSimPlayBtn.addEventListener('click', () => {
+      if (simPlaying) {
+        pauseSimPlayback();
+      } else {
+        startSimPlayback();
+      }
+    });
+
+    function openProjectModal(projectId) {
+      const item = projects.find((p) => p.id === projectId) || projects[0];
+
+      document.getElementById('modalCategory').textContent = item.category;
+      document.getElementById('modalDuration').textContent = item.duration;
+      document.getElementById('modalAspect').textContent = item.aspect;
+      document.getElementById('modalTitle').textContent = item.title;
+      document.getElementById('modalBrief').textContent = item.brief;
+      document.getElementById('modalCraft').textContent = item.craft;
+
+      const modalImg = document.getElementById('modalImage');
+      modalImg.src = item.image;
+      modalImg.onerror = function () {
+        this.onerror = null;
+        this.src = item.fallback;
+      };
+
+      document.getElementById('modalTools').innerHTML = item.tools
+        .map(
+          (tool) =>
+            `<span class="px-3 py-1 rounded-full bg-charcoal border border-champagne/30 font-display text-[10px] tracking-[0.16em] text-ivory uppercase">${tool}</span>`
+        )
+        .join('');
+
+      simPercent = 15;
+      simProgressBar.style.width = '15%';
+      projectModal.classList.remove('hidden');
+      projectModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      startSimPlayback();
+    }
+
+    function closeProjectModal() {
+      clearInterval(simInterval);
+      projectModal.classList.add('hidden');
+      projectModal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    closeModalBtn.addEventListener('click', closeProjectModal);
+    projectModal.addEventListener('click', (e) => {
+      if (e.target === projectModal) closeProjectModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !projectModal.classList.contains('hidden')) {
+        closeProjectModal();
+      }
+    });
+
+    // =====================================================================
+    // MOBILE MENU TOGGLE
+    // =====================================================================
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      const isHidden = mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden');
+      mobileMenuBtn.setAttribute('aria-expanded', String(isHidden));
+    });
+
+    mobileNavLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // =====================================================================
+    // CLIPBOARD COPY FOR EMAIL
+    // =====================================================================
+    function copyEmailToClipboard() {
+      const email = 'israeljaxson@gmail.com';
+      const tempInput = document.createElement('input');
+      tempInput.value = email;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+
+      const label = document.getElementById('copyEmailText');
+      label.textContent = 'COPIED TO CLIPBOARD ✓';
+      setTimeout(() => {
+        label.textContent = 'COPY EMAIL';
+      }, 2400);
+    }
+
+    // Initialize Portfolio Grid on Load
+    renderProjects('ALL');
+  </script>
+</body>
+</html>
