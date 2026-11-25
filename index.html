@@ -225,9 +225,9 @@
         aria-hidden="true"
       ></div>
 
-      <div class="max-w-7xl mx-auto px-5 sm:px-8 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 w-full grid grid-cols-1 lg:grid-cols-12 items-center">
         <!-- Left Editorial Copy Column -->
-        <div class="lg:col-span-7 space-y-7 z-10">
+        <div class="lg:col-span-12 max-w-4xl space-y-7 z-10">
           <!-- Eyebrow -->
           <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-hairline bg-charcoal/70">
             <span class="w-2 h-2 rounded-full bg-champagne animate-pulse"></span>
@@ -274,6 +274,19 @@
             </a>
           </div>
 
+          <button
+            type="button"
+            onclick="openProjectModal(0)"
+            aria-label="Play featured showreel"
+            class="inline-flex items-center gap-3 text-left text-ivory/85 hover:text-champagne transition-colors"
+          >
+            <span class="w-10 h-10 shrink-0 rounded-full border border-champagne/60 text-champagne flex items-center justify-center" aria-hidden="true">▶</span>
+            <span>
+              <span class="block font-display text-[10px] tracking-[0.2em] uppercase">Play director's reel</span>
+              <span class="block font-serif italic text-base">Mythology, Machines &amp; Motion</span>
+            </span>
+          </button>
+
           <!-- Quick Reel Telemetry Strip -->
           <div class="pt-6 border-t border-hairline grid grid-cols-3 gap-4 max-w-lg">
             <div>
@@ -291,54 +304,6 @@
           </div>
         </div>
 
-        <!-- Right Dramatic Portrait Frame Column -->
-        <div class="lg:col-span-5 relative">
-          <div
-            class="relative mx-auto max-w-md lg:max-w-none aspect-[4/5] rounded-3xl overflow-hidden border border-ivory/15 bg-charcoal shadow-2xl group"
-          >
-            <!-- Atmospheric Director Portrait Visual -->
-            <img
-              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=80"
-              onerror="this.onerror=null;this.src='https://placehold.co/800x1000/141418/D4AF37?text=ISRAEL+EKPENYONG';"
-              alt="Israel Ekpenyong — AI Filmmaker & Visual Storyteller"
-              class="w-full h-full object-cover object-center grayscale contrast-125 brightness-75 group-hover:scale-105 transition-transform duration-700"
-            />
-
-            <!-- Warm Chiaroscuro & Champagne Duotone Gradient Overlay -->
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/35 to-champagne/10 mix-blend-multiply"
-            ></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent"></div>
-
-            <!-- Viewfinder Frame Reticles -->
-            <div class="absolute top-5 left-5 right-5 flex items-center justify-between text-[10px] font-display tracking-[0.22em] text-ivory/75 uppercase">
-              <span class="inline-flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-red-500"></span> REC · RAW 4K
-              </span>
-              <span>I·E STUDIO</span>
-            </div>
-
-            <!-- Bottom Overlay Caption Card -->
-            <div class="absolute bottom-5 inset-x-5 p-4 sm:p-5 rounded-2xl bg-obsidian/80 backdrop-blur-md border border-hairline flex items-center justify-between gap-4">
-              <div>
-                <p class="font-display text-[10px] tracking-[0.24em] text-champagne uppercase">DIRECTOR'S REEL</p>
-                <p class="font-serif text-lg sm:text-xl text-ivory italic mt-0.5">
-                  Mythology, Machines & Motion
-                </p>
-              </div>
-              <button
-                type="button"
-                onclick="openProjectModal(0)"
-                aria-label="Play Featured Showreel"
-                class="w-11 h-11 shrink-0 rounded-full bg-champagne text-obsidian flex items-center justify-center hover:scale-105 transition-transform"
-              >
-                <svg class="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
