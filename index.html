@@ -498,7 +498,7 @@
     <section id="work" class="py-20 sm:py-28">
       <div class="max-w-7xl mx-auto px-5 sm:px-8">
         <!-- Section Header & Filter Bar -->
-        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-5 mb-9">
+        <div class="mb-9 space-y-6">
           <div class="space-y-3">
             <p class="font-mono text-[11px] tracking-[0.15em] text-champagne uppercase">
               01 / SELECTED WORK
@@ -513,14 +513,14 @@
             id="filterBar"
             role="group"
             aria-label="Filter projects by category"
-            class="flex flex-nowrap items-center gap-2 overflow-x-auto max-w-full pb-1"
+            class="flex w-full flex-wrap items-center justify-between gap-x-3 gap-y-2 pb-1"
           >
             <button
               type="button"
               data-filter="ALL"
               class="filter-btn active shrink-0 px-3 py-2 rounded-full font-display text-[10px] tracking-[0.12em] whitespace-nowrap uppercase transition-all bg-champagne text-obsidian font-semibold"
             >
-              ALL (9)
+              ALL (13)
             </button>
             <button
               type="button"
@@ -531,6 +531,13 @@
             </button>
             <button
               type="button"
+              data-filter="SHORT FILM"
+              class="filter-btn shrink-0 px-3 py-2 rounded-full font-display text-[10px] tracking-[0.12em] whitespace-nowrap uppercase transition-all border border-hairline bg-charcoal/70 text-ivory/80 hover:border-champagne/60 hover:text-ivory"
+            >
+              SHORT FILM
+            </button>
+            <button
+              type="button"
               data-filter="AUTOMOTIVE"
               class="filter-btn shrink-0 px-3 py-2 rounded-full font-display text-[10px] tracking-[0.12em] whitespace-nowrap uppercase transition-all border border-hairline bg-charcoal/70 text-ivory/80 hover:border-champagne/60 hover:text-ivory"
             >
@@ -538,17 +545,24 @@
             </button>
             <button
               type="button"
-              data-filter="SHORT-FORM / REELS"
-              class="filter-btn shrink-0 px-3 py-2 rounded-full font-display text-[10px] tracking-[0.12em] whitespace-nowrap uppercase transition-all border border-hairline bg-charcoal/70 text-ivory/80 hover:border-champagne/60 hover:text-ivory"
-            >
-              SHORT-FORM / REELS
-            </button>
-            <button
-              type="button"
               data-filter="BRANDED & FASHION"
               class="filter-btn shrink-0 px-3 py-2 rounded-full font-display text-[10px] tracking-[0.12em] whitespace-nowrap uppercase transition-all border border-hairline bg-charcoal/70 text-ivory/80 hover:border-champagne/60 hover:text-ivory"
             >
               BRANDED & FASHION
+            </button>
+            <button
+              type="button"
+              data-filter="AI MUSE"
+              class="filter-btn shrink-0 px-3 py-2 rounded-full font-display text-[10px] tracking-[0.12em] whitespace-nowrap uppercase transition-all border border-hairline bg-charcoal/70 text-ivory/80 hover:border-champagne/60 hover:text-ivory"
+            >
+              AI MUSE
+            </button>
+            <button
+              type="button"
+              data-filter="AI FILMMAKING"
+              class="filter-btn shrink-0 px-3 py-2 rounded-full font-display text-[10px] tracking-[0.12em] whitespace-nowrap uppercase transition-all border border-hairline bg-charcoal/70 text-ivory/80 hover:border-champagne/60 hover:text-ivory"
+            >
+              AI FILMMAKING
             </button>
           </div>
         </div>
@@ -919,7 +933,7 @@
             </p>
           </div>
 
-          <div class="md:col-span-4 space-y-4 p-5 rounded-2xl bg-obsidian/80 border border-hairline">
+          <div id="modalDetailsPanel" class="md:col-span-4 space-y-4 p-5 rounded-2xl bg-obsidian/80 border border-hairline">
             <div>
               <p class="font-display text-[10px] tracking-[0.24em] text-champagne uppercase">
                 TOOLS & PIPELINE
@@ -955,8 +969,9 @@
         subtitle: 'Mythology & Apocryphal Lore',
         category: 'CINEMATIC LORE',
         duration: '04:18 · TRAILER / CHAPTER I',
-        aspect: '16:9 ANAMORPHIC',
+        aspect: '9:16 ANAMORPHIC',
         video: 'assets/videos/cinematic1-preview.mp4',
+        poster: 'assets/image/video-posters/cinematic1.jpg',
         hideCardDetails: true,
         image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1000&q=80',
         fallback: 'https://placehold.co/900x600/141210/D4AF37?text=ENOCH+-+THE+MOVIE',
@@ -982,58 +997,14 @@
           'Blends AI-reconstructed 1950s engineering workshops, cutaway rotor animations, and high-RPM exhaust foley.',
       },
       {
-        id: 2,
-        title: '1936 Hidden Headlights',
-        subtitle: 'Viral Automotive Short',
-        category: 'SHORT-FORM / REELS',
-        duration: '00:58 · VIRAL SHORT',
-        aspect: '9:16 VERTICAL',
-        image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80',
-        fallback: 'https://placehold.co/900x600/141418/D4AF37?text=1936+HIDDEN+HEADLIGHTS',
-        brief:
-          'A high-retention vertical story uncovering the Art Deco Cord 810—the world’s first production car with hand-cranked pop-up headlights—paced for maximum 3-second hook retention.',
-        tools: ['Kling', 'Runway', 'CapCut', 'DaVinci Resolve'],
-        craft:
-          'Tight 1.8-second visual cut cadence synchronized to mechanical latch foley and warm 1930s Kodachrome grading.',
-      },
-      {
-        id: 3,
-        title: 'Sienna Grey — Editorial Lookbook',
-        subtitle: 'Fashion & Lifestyle Visuals',
-        category: 'BRANDED & FASHION',
-        duration: '01:15 · CAMPAIGN FILM',
-        aspect: '4:5 EDITORIAL',
-        image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1000&q=80',
-        fallback: 'https://placehold.co/900x600/181615/D4AF37?text=SIENNA+GREY+LOOKBOOK',
-        brief:
-          'Monochrome-to-champagne luxury fashion film showcasing architectural tailoring against brutalist limestone galleries. Crafted without physical location shoots while preserving tactile fabric weave.',
-        tools: ['Midjourney', 'Veo', 'Runway', 'DaVinci Resolve'],
-        craft:
-          'Controlled camera dolly motion prompts paired with soft halation glow and editorial serif title cards.',
-      },
-      {
-        id: 4,
-        title: 'Monolith Cinema Reels',
-        subtitle: 'Micro-Drama Series Hooks',
-        category: 'SHORT-FORM / REELS',
-        duration: '00:45 · EPISODIC REEL',
-        aspect: '9:16 VERTICAL',
-        image: 'https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?auto=format&fit=crop&w=1000&q=80',
-        fallback: 'https://placehold.co/900x600/0F1014/D4AF37?text=MONOLITH+CINEMA+REELS',
-        brief:
-          'A serialized sci-fi micro-drama anthology designed for social feeds—each 45-second installment delivers a self-contained mystery around obsidian monoliths appearing across Earth.',
-        tools: ['Veo', 'Kling', 'CapCut', 'Midjourney'],
-        craft:
-          'Atmospheric scale contrast, tension risers, and cliffhanger framing engineered for repeat watch loops.',
-      },
-      {
         id: 5,
         title: 'The Watchers: Flood Chronicles',
         subtitle: 'Enochian Lore — Chapter II',
         category: 'CINEMATIC LORE',
         duration: '06:40 · LORE EPISODE',
-        aspect: '16:9 ANAMORPHIC',
+        aspect: '9:16 ANAMORPHIC',
         video: 'assets/videos/cinematic2-preview.mp4',
+        poster: 'assets/image/video-posters/cinematic2.jpg',
         hideCardDetails: true,
         image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=80',
         fallback: 'https://placehold.co/900x600/121110/D4AF37?text=THE+WATCHERS+CHRONICLES',
@@ -1059,34 +1030,122 @@
           'High-velocity tracking shots, metallic specular highlights, and vintage newsreel audio restoration.',
       },
       {
-        id: 7,
-        title: 'Aurelia Horology — Nocturne',
-        subtitle: 'Luxury Timepiece Commercial',
+        id: 9,
+        title: 'Fashion 1',
+        subtitle: 'Fashion Film',
         category: 'BRANDED & FASHION',
-        duration: '00:35 · SPEC COMMERCIAL',
-        aspect: '16:9 COMMERCIAL',
-        image: 'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=1000&q=80',
-        fallback: 'https://placehold.co/900x600/151310/D4AF37?text=AURELIA+HOROLOGY',
-        brief:
-          'Macro-lens tourbillon escapement choreography bathed in liquid gold reflections and deep obsidian shadows for a haute-horlogerie brand concept.',
-        tools: ['Midjourney', 'Veo', 'DaVinci Resolve'],
-        craft:
-          'Precision macro lighting continuity, mechanical tick foley synchronization, and champagne gold color curves.',
+        duration: '00:14 · FASHION FILM',
+        aspect: '9:16 VERTICAL',
+        video: 'assets/videos/fashion (1).mp4',
+        poster: 'assets/image/video-posters/fashion-1.jpg',
+        brief: '',
+        tools: [],
+        craft: '',
       },
       {
-        id: 8,
-        title: 'Forgotten Engines in 60 Seconds',
-        subtitle: 'The Rolling Chassis Shorts',
-        category: 'SHORT-FORM / REELS',
-        duration: '01:00 · SERIES PILOT',
+        id: 10,
+        title: 'Fashion 2',
+        subtitle: 'Fashion Film',
+        category: 'BRANDED & FASHION',
+        duration: '00:14 · FASHION FILM',
         aspect: '9:16 VERTICAL',
-        image: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1000&q=80',
-        fallback: 'https://placehold.co/900x600/111215/D4AF37?text=FORGOTTEN+ENGINES',
-        brief:
-          'Fast-paced vertical series spotlighting radical sleeve-valve, turbine, and radial automotive powerplants that defied convention.',
-        tools: ['Kling', 'CapCut', 'Midjourney'],
-        craft:
-          'Kinetic typography overlays, crisp mechanical sound design, and high-contrast studio rim lighting.',
+        video: 'assets/videos/fashion2-preview.mp4',
+        poster: 'assets/image/video-posters/fashion-2.jpg',
+        brief: '',
+        tools: [],
+        craft: '',
+      },
+      {
+        id: 11,
+        title: 'Fashion 3',
+        subtitle: 'Fashion Film',
+        category: 'BRANDED & FASHION',
+        duration: '00:08 · FASHION FILM',
+        aspect: '9:16 VERTICAL',
+        video: 'assets/videos/fashion (3).mp4',
+        poster: 'assets/image/video-posters/fashion-3.jpg',
+        brief: '',
+        tools: [],
+        craft: '',
+      },
+      {
+        id: 12,
+        title: 'Cinematic 1',
+        subtitle: 'Short Film',
+        category: 'SHORT FILM',
+        duration: '01:33 · SHORT FILM',
+        aspect: '9:16 VERTICAL',
+        video: 'assets/videos/cinematic 1.mp4',
+        poster: 'assets/image/video-posters/short-film-1.jpg',
+        brief: '',
+        tools: [],
+        craft: '',
+      },
+      {
+        id: 13,
+        title: 'Cinematic 2',
+        subtitle: 'Short Film',
+        category: 'SHORT FILM',
+        duration: '02:01 · SHORT FILM',
+        aspect: '9:16 VERTICAL',
+        video: 'assets/videos/cinemaic 2.mp4',
+        poster: 'assets/image/video-posters/short-film-2.jpg',
+        brief: '',
+        tools: [],
+        craft: '',
+      },
+      {
+        id: 14,
+        title: 'Jet',
+        subtitle: 'AI Muse',
+        category: 'AI MUSE',
+        duration: '00:11 · AI MUSE',
+        aspect: '9:16 VERTICAL',
+        video: 'assets/videos/jet-preview.mp4',
+        poster: 'assets/image/video-posters/jet.jpg',
+        brief: '',
+        tools: [],
+        craft: '',
+      },
+      {
+        id: 15,
+        title: 'Mornings',
+        subtitle: 'AI Muse',
+        category: 'AI MUSE',
+        duration: '00:11 · AI MUSE',
+        aspect: '9:16 VERTICAL',
+        video: 'assets/videos/mornings-preview.mp4',
+        poster: 'assets/image/video-posters/mornings.jpg',
+        brief: '',
+        tools: [],
+        craft: '',
+      },
+      {
+        id: 16,
+        title: 'Shot 2',
+        subtitle: 'AI Muse',
+        category: 'AI MUSE',
+        duration: '00:10 · AI MUSE',
+        aspect: '9:16 VERTICAL',
+        video: 'assets/videos/shot-2-preview.mp4',
+        poster: 'assets/image/video-posters/shot-2.jpg',
+        brief: '',
+        tools: [],
+        craft: '',
+      },
+      {
+        id: 17,
+        title: 'AI Film',
+        subtitle: 'AI Filmmaking',
+        category: 'AI FILMMAKING',
+        duration: '00:12 · AI FILM',
+        aspect: '4:3 LANDSCAPE',
+        cardAspect: 'aspect-[4/3]',
+        video: 'assets/videos/ai-film-preview.mp4',
+        poster: 'assets/image/video-posters/ai-film.jpg',
+        brief: '',
+        tools: [],
+        craft: '',
       },
     ];
 
@@ -1114,20 +1173,14 @@
           >
             <div>
               <!-- Thumbnail Frame -->
-              <div class="relative ${project.video ? 'aspect-[9/16]' : 'aspect-[16/10]'} overflow-hidden bg-obsidian">
-                ${
-                  project.video
-                    ? ''
-                    : `
+              <div class="relative ${project.cardAspect || (project.video ? 'aspect-[9/16]' : 'aspect-[16/10]')} overflow-hidden bg-obsidian">
                 <img
-                  src="${project.image}"
+                  src="${project.poster || project.image}"
                   onerror="this.onerror=null;this.src='${project.fallback}';"
                   alt="${project.title}"
                   loading="lazy"
                   class="w-full h-full object-cover brightness-85 contrast-110 group-hover:scale-105 transition-transform duration-700"
                 />
-                `
-                }
                 ${
                   project.video
                     ? `
@@ -1179,9 +1232,15 @@
                 <h3 class="font-serif text-2xl sm:text-[1.7rem] text-ivory group-hover:text-champagneLight transition-colors leading-snug">
                   ${project.title}
                 </h3>
+                ${
+                  project.brief
+                    ? `
                 <p class="text-sm text-mutedIvory font-light line-clamp-2 leading-relaxed">
                   ${project.brief}
                 </p>
+                `
+                    : ''
+                }
               </div>
               `
               }
@@ -1301,6 +1360,10 @@
       document.getElementById('modalSimScrubber'),
     ];
 
+    modalVideo.addEventListener('playing', () => {
+      modalVideoError.classList.add('hidden');
+    });
+
     let simInterval = null;
     let simPlaying = true;
     let simPercent = 22;
@@ -1356,6 +1419,11 @@
       document.getElementById('modalTitle').textContent = item.title;
       document.getElementById('modalBrief').textContent = item.brief;
       document.getElementById('modalCraft').textContent = item.craft;
+      document.getElementById('modalBrief').classList.toggle('hidden', !item.brief);
+      document.getElementById('modalDetailsPanel').classList.toggle(
+        'hidden',
+        item.tools.length === 0 && !item.craft
+      );
 
       modalVideo.pause();
       modalVideo.removeAttribute('src');
@@ -1397,6 +1465,7 @@
       document.body.style.overflow = 'hidden';
       if (hasVideo) {
         modalVideo.play().catch((error) => {
+          if (error.name === 'AbortError') return;
           console.error('Unable to play project video:', error);
           modalVideoError.classList.remove('hidden');
         });
