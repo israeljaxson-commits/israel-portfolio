@@ -213,11 +213,39 @@
         color 0.3s var(--ease-cinema),
         background-color 0.3s var(--ease-cinema),
         border-color 0.3s var(--ease-cinema),
-        transform 0.3s var(--ease-cinema);
+        transform 0.3s var(--ease-cinema),
+        box-shadow 0.3s var(--ease-cinema);
+    }
+
+    .filter-btn:hover,
+    .filter-btn:focus-visible {
+      transform: translateY(-2px) scale(1.025);
+      box-shadow: 0 8px 22px rgba(212, 175, 55, 0.14);
     }
 
     .filter-btn:active {
-      transform: scale(0.97);
+      transform: translateY(0) scale(0.97);
+    }
+
+    @keyframes microWobble {
+      0%,
+      100% {
+        rotate: 0deg;
+      }
+      25% {
+        rotate: -0.55deg;
+      }
+      50% {
+        rotate: 0.45deg;
+      }
+      75% {
+        rotate: -0.25deg;
+      }
+    }
+
+    :is(.roll-cta, .filter-btn, .project-card, .expertise-row, .capability-pill, .process-step, .channel-link):hover,
+    :is(.roll-cta, .filter-btn, .project-card, .expertise-row, .capability-pill, .process-step, .channel-link):focus-visible {
+      animation: microWobble 0.42s var(--ease-cinema) 1;
     }
 
     .creator-portrait-column {
@@ -345,11 +373,41 @@
     }
 
     .capability-pill {
-      gap: 0.5rem;
-      padding: 0 0.9rem;
-      border: 1px solid rgba(244, 241, 234, 0.12);
-      background: rgba(10, 10, 11, 0.72);
-      color: #fffdf8;
+      padding: 0 0.25rem;
+      color: #f0cf68;
+      font-weight: 600;
+    }
+
+    .process-step {
+      position: relative;
+    }
+
+    .process-arrow {
+      position: absolute;
+      right: 0.1rem;
+      top: 50%;
+      color: var(--accent-champagne);
+      font-size: 0.85rem;
+      line-height: 1;
+      transform: translate(50%, -50%);
+    }
+
+    .process-arrow::before {
+      content: "→";
+    }
+
+    @media (max-width: 639px) {
+      .process-step:nth-child(2) .process-arrow {
+        right: auto;
+        bottom: -1.125rem;
+        left: calc(-50% - 0.6rem);
+        top: auto;
+        transform: none;
+      }
+
+      .process-step:nth-child(2) .process-arrow::before {
+        content: "↙";
+      }
     }
 
     @media (min-width: 768px) {
@@ -539,7 +597,9 @@
           <!-- Role Tags -->
           <div class="flex flex-wrap items-center gap-3 font-display text-sm sm:text-base font-medium tracking-normal text-ivory/90">
             <span>AI filmmaker</span>
-            <span class="text-champagne">✳</span>
+            <svg class="inline-block h-3.5 w-3.5 align-[-0.1em] text-champagne" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2.5 14.2 9.8 21.5 12l-7.3 2.2L12 21.5l-2.2-7.3L2.5 12l7.3-2.2L12 2.5Z" />
+            </svg>
             <span>Visual storyteller</span>
           </div>
 
@@ -581,7 +641,7 @@
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Visit the Enochian Lore YouTube channel"
-              class="group"
+              class="channel-link group"
             >
               <p class="channel-link-title font-display text-sm sm:text-base font-semibold text-ivory group-hover:text-champagneLight transition-colors">Enochian Lore ↗</p>
               <p class="font-display text-xs text-mutedIvory mt-0.5 group-hover:text-ivory transition-colors">Biblical lore</p>
@@ -591,7 +651,7 @@
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Visit The Rolling Chassis YouTube channel"
-              class="group"
+              class="channel-link group"
             >
               <p class="channel-link-title font-display text-sm sm:text-base font-semibold text-champagne group-hover:text-champagneLight transition-colors">Rolling Chassis ↗</p>
               <p class="font-display text-xs text-mutedIvory mt-0.5 group-hover:text-ivory transition-colors">Automotive</p>
@@ -601,7 +661,7 @@
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Visit the Izzy Studio YouTube channel"
-              class="group"
+              class="channel-link group"
             >
               <p class="channel-link-title font-display text-sm sm:text-base font-semibold text-ivory group-hover:text-champagneLight transition-colors">Izzy Studio ↗</p>
               <p class="font-display text-xs text-mutedIvory mt-0.5 group-hover:text-ivory transition-colors">Studio</p>
@@ -656,7 +716,7 @@
           </p>
           <h2 class="reveal-heading font-heading font-semibold text-3xl sm:text-4xl lg:text-5xl leading-[1.1] tracking-[-0.03em] text-ivory">
             <span class="reveal-mask"><span class="reveal-line">Generative video fails when every shot looks like a screensaver.</span></span>
-            <span class="reveal-mask"><span class="reveal-line">I treat AI clips like raw dailies—cutting on action, matching grain and color in Resolve,</span></span>
+            <span class="reveal-mask"><span class="reveal-line">I treat AI clips as raw dailies—cutting on action, matching grain and color in Resolve,</span></span>
             <span class="reveal-mask"><span class="reveal-line">and building the emotion in the sound mix.</span></span>
           </h2>
           <p class="text-mutedIvory text-base sm:text-lg max-w-2xl leading-relaxed font-normal">
@@ -666,20 +726,23 @@
         </div>
 
         <ol class="mt-10 grid grid-cols-2 sm:grid-cols-4 border-t border-hairline pt-5 gap-x-4 gap-y-5">
-          <li class="flex items-baseline gap-2.5">
-            <span class="font-mono text-[10px] tracking-[0.08em] text-champagne">01</span>
+          <li class="process-step flex items-baseline gap-2.5">
+            <span class="font-display text-[10px] tracking-[0.08em] text-champagne">01</span>
             <span class="font-display text-sm font-medium text-ivory">Creative concept</span>
+            <span class="process-arrow" aria-hidden="true"></span>
           </li>
-          <li class="flex items-baseline gap-2.5">
-            <span class="font-mono text-[10px] tracking-[0.08em] text-champagne">02</span>
+          <li class="process-step flex items-baseline gap-2.5">
+            <span class="font-display text-[10px] tracking-[0.08em] text-champagne">02</span>
             <span class="font-display text-sm font-medium text-ivory">AI generation</span>
+            <span class="process-arrow" aria-hidden="true"></span>
           </li>
-          <li class="flex items-baseline gap-2.5">
-            <span class="font-mono text-[10px] tracking-[0.08em] text-champagne">03</span>
+          <li class="process-step flex items-baseline gap-2.5">
+            <span class="font-display text-[10px] tracking-[0.08em] text-champagne">03</span>
             <span class="font-display text-sm font-medium text-ivory">Edit &amp; color</span>
+            <span class="process-arrow" aria-hidden="true"></span>
           </li>
-          <li class="flex items-baseline gap-2.5">
-            <span class="font-mono text-[10px] tracking-[0.08em] text-champagne">04</span>
+          <li class="process-step flex items-baseline gap-2.5">
+            <span class="font-display text-[10px] tracking-[0.08em] text-champagne">04</span>
             <span class="font-display text-sm font-medium text-ivory">Final frame</span>
           </li>
         </ol>
@@ -695,7 +758,10 @@
         <div class="mb-9 space-y-6">
           <div class="space-y-3">
             <p class="font-display text-sm font-medium text-mutedIvory">
-              <span class="font-mono text-xs text-champagne">01</span> / Selected work
+              <svg class="mr-1.5 inline-block h-3.5 w-3.5 align-[-0.1em] text-champagne" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2.5 14.2 9.8 21.5 12l-7.3 2.2L12 21.5l-2.2-7.3L2.5 12l7.3-2.2L12 2.5Z" />
+              </svg>
+              / Selected work
             </p>
             <h2 class="reveal-heading font-heading font-semibold text-4xl sm:text-6xl tracking-[-0.03em] text-ivory">
               <span class="reveal-mask"><span class="reveal-line">Selected <span class="text-champagneLight">works.</span></span></span>
@@ -793,7 +859,10 @@
       <div class="max-w-7xl mx-auto px-5 sm:px-8">
         <div class="max-w-3xl mb-14 space-y-3">
           <p class="font-display text-sm font-medium text-mutedIvory">
-            <span class="font-mono text-xs text-champagne">02</span> / Creative capabilities
+            <svg class="mr-1.5 inline-block h-3.5 w-3.5 align-[-0.1em] text-champagne" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2.5 14.2 9.8 21.5 12l-7.3 2.2L12 21.5l-2.2-7.3L2.5 12l7.3-2.2L12 2.5Z" />
+            </svg>
+            / Creative capabilities
           </p>
           <h2 class="reveal-heading font-heading font-semibold text-4xl sm:text-6xl tracking-[-0.03em] text-ivory">
             <span class="reveal-mask"><span class="reveal-line">Creative <span class="text-champagneLight">capabilities.</span></span></span>
@@ -807,7 +876,7 @@
             class="expertise-row group py-6 sm:py-7 px-4 sm:px-6 rounded-2xl hover:bg-charcoal/70 transition-colors duration-300 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center"
           >
             <div class="lg:col-span-2 font-mono text-xl sm:text-2xl text-champagne">
-              01 —
+              <span class="font-display">01</span> —
             </div>
             <div class="lg:col-span-5">
               <h3 class="font-heading font-semibold text-2xl sm:text-3xl text-ivory group-hover:text-champagneLight transition-colors">
@@ -827,7 +896,7 @@
             class="expertise-row group py-6 sm:py-7 px-4 sm:px-6 rounded-2xl hover:bg-charcoal/70 transition-colors duration-300 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center"
           >
             <div class="lg:col-span-2 font-mono text-xl sm:text-2xl text-champagne">
-              02 —
+              <span class="font-display">02</span> —
             </div>
             <div class="lg:col-span-5">
               <h3 class="font-heading font-semibold text-2xl sm:text-3xl text-ivory group-hover:text-champagneLight transition-colors">
@@ -847,7 +916,7 @@
             class="expertise-row group py-6 sm:py-7 px-4 sm:px-6 rounded-2xl hover:bg-charcoal/70 transition-colors duration-300 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center"
           >
             <div class="lg:col-span-2 font-mono text-xl sm:text-2xl text-champagne">
-              03 —
+              <span class="font-display">03</span> —
             </div>
             <div class="lg:col-span-5">
               <h3 class="font-heading font-semibold text-2xl sm:text-3xl text-ivory group-hover:text-champagneLight transition-colors">
@@ -867,7 +936,7 @@
             class="expertise-row group py-6 sm:py-7 px-4 sm:px-6 rounded-2xl hover:bg-charcoal/70 transition-colors duration-300 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center"
           >
             <div class="lg:col-span-2 font-mono text-xl sm:text-2xl text-champagne">
-              04 —
+              <span class="font-display">04</span> —
             </div>
             <div class="lg:col-span-5">
               <h3 class="font-heading font-semibold text-2xl sm:text-3xl text-ivory group-hover:text-champagneLight transition-colors">
@@ -909,7 +978,10 @@
         <!-- Right Bio & Metadata Grid -->
         <div class="lg:col-span-7 space-y-7">
           <p class="font-display text-sm font-medium text-mutedIvory">
-            <span class="font-mono text-xs text-champagne">03</span> / About
+            <svg class="mr-1.5 inline-block h-3.5 w-3.5 align-[-0.1em] text-champagne" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2.5 14.2 9.8 21.5 12l-7.3 2.2L12 21.5l-2.2-7.3L2.5 12l7.3-2.2L12 2.5Z" />
+            </svg>
+            / About
           </p>
 
           <h2 class="reveal-heading font-heading font-semibold text-4xl sm:text-6xl tracking-[-0.03em] text-ivory leading-[1.05]">
@@ -960,7 +1032,10 @@
           ></div>
 
           <p class="font-display text-sm font-medium text-mutedIvory relative z-10">
-            <span class="font-mono text-xs text-champagne">04</span> / Start a project
+            <svg class="mr-1.5 inline-block h-3.5 w-3.5 align-[-0.1em] text-champagne" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2.5 14.2 9.8 21.5 12l-7.3 2.2L12 21.5l-2.2-7.3L2.5 12l7.3-2.2L12 2.5Z" />
+            </svg>
+            / Start a project
           </p>
 
           <h2 class="reveal-heading font-heading font-semibold text-4xl sm:text-6xl lg:text-7xl tracking-[-0.03em] text-ivory leading-[1.04] max-w-3xl mx-auto relative z-10">
