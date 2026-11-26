@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Israel Ekpenyong (I·E) — AI Filmmaker & Visual Storyteller</title>
 
-  <!-- Google Fonts: Instrument Serif for display headlines, Plus Jakarta Sans for UI, JetBrains Mono for metadata -->
+  <!-- Google Fonts: Archivo for headings, Plus Jakarta Sans for UI, JetBrains Mono for numeric details -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
     rel="stylesheet"
   />
 
@@ -30,8 +30,7 @@
             hairline: 'rgba(244, 241, 234, 0.12)',
           },
           fontFamily: {
-            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-            instrument: ['"Instrument Serif"', 'serif'],
+            heading: ['Archivo', 'sans-serif'],
             display: ['"Plus Jakarta Sans"', 'sans-serif'],
             mono: ['"JetBrains Mono"', 'monospace'],
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
@@ -47,6 +46,8 @@
       --bg-obsidian: #0a0a0b;
       --text-ivory: #f4f1ea;
       --accent-champagne: #d4af37;
+      --accent-cinema-amber: #e26d2d;
+      --ease-cinema: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     body {
@@ -54,6 +55,173 @@
       color: var(--text-ivory);
       font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
+    }
+
+    .reveal-mask {
+      display: block;
+      overflow: hidden;
+      padding-block: 0.04em 0.1em;
+      margin-block: -0.04em -0.1em;
+    }
+
+    .reveal-line {
+      display: block;
+    }
+
+    .motion-ready .reveal-line {
+      transform: translateY(105%);
+      opacity: 0;
+      transition:
+        transform 0.85s var(--ease-cinema),
+        opacity 0.85s var(--ease-cinema);
+      transition-delay: calc(var(--line-index, 0) * 90ms);
+    }
+
+    .motion-ready .reveal-heading.is-visible .reveal-line {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .roll-cta {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    .roll-cta::before {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      border-radius: inherit;
+      background: rgba(226, 109, 45, 0.16);
+      content: "";
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.45s var(--ease-cinema);
+    }
+
+    .roll-cta:hover::before,
+    .roll-cta:focus-visible::before {
+      transform: scaleX(1);
+    }
+
+    .roll-cta > span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-label-roll {
+      display: inline-grid;
+      overflow: hidden;
+      line-height: 1.25;
+    }
+
+    .cta-label-roll > span {
+      grid-area: 1 / 1;
+      display: block;
+      white-space: nowrap;
+      transition: transform 0.32s var(--ease-cinema);
+    }
+
+    .cta-label-roll > span:last-child {
+      transform: translateY(110%);
+    }
+
+    .roll-cta:hover .cta-label-roll > span:first-child,
+    .roll-cta:focus-visible .cta-label-roll > span:first-child {
+      transform: translateY(-110%);
+    }
+
+    .roll-cta:hover .cta-label-roll > span:last-child,
+    .roll-cta:focus-visible .cta-label-roll > span:last-child {
+      transform: translateY(0);
+    }
+
+    .cta-arrow {
+      display: inline-block;
+      transition: transform 0.32s var(--ease-cinema);
+    }
+
+    .roll-cta:hover .cta-arrow,
+    .roll-cta:focus-visible .cta-arrow {
+      transform: translate(3px, -3px);
+    }
+
+    .channel-link-title {
+      position: relative;
+      display: inline-block;
+    }
+
+    .channel-link-title::after {
+      position: absolute;
+      right: 0;
+      bottom: -0.2rem;
+      left: 0;
+      height: 1px;
+      background: currentColor;
+      content: "";
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s var(--ease-cinema);
+    }
+
+    .group:hover .channel-link-title::after,
+    .group:focus-visible .channel-link-title::after {
+      transform: scaleX(1);
+    }
+
+    .play-reel-icon {
+      transform: translate3d(var(--magnetic-x, 0), var(--magnetic-y, 0), 0) scale(1);
+      transition:
+        transform 0.35s var(--ease-cinema),
+        background-color 0.35s var(--ease-cinema),
+        border-color 0.35s var(--ease-cinema),
+        color 0.35s var(--ease-cinema);
+    }
+
+    .play-reel-trigger:hover .play-reel-icon,
+    .play-reel-trigger:focus-visible .play-reel-icon {
+      border-color: var(--accent-cinema-amber);
+      background-color: var(--accent-cinema-amber);
+      color: var(--bg-obsidian);
+      transform: translate3d(var(--magnetic-x, 0), var(--magnetic-y, 0), 0) scale(1.1);
+    }
+
+    .expertise-list > .expertise-row {
+      transition: all 0.35s var(--ease-cinema);
+    }
+
+    .expertise-list:hover > .expertise-row {
+      opacity: 0.35;
+    }
+
+    .expertise-list:hover > .expertise-row:hover {
+      opacity: 1;
+      transform: translateX(8px);
+    }
+
+    .project-card-image {
+      transition: transform 0.7s var(--ease-cinema);
+    }
+
+    .project-card:hover .project-card-image {
+      transform: scale(1.04);
+    }
+
+    .filter-btn {
+      transition:
+        color 0.3s var(--ease-cinema),
+        background-color 0.3s var(--ease-cinema),
+        border-color 0.3s var(--ease-cinema),
+        transform 0.3s var(--ease-cinema);
+    }
+
+    .filter-btn:active {
+      transform: scale(0.97);
+    }
+
+    .creator-portrait-column {
+      will-change: transform;
     }
 
     body::before {
@@ -165,15 +333,15 @@
       border-radius: 999px;
       font-family: "Plus Jakarta Sans", sans-serif;
       font-size: 0.67rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      text-transform: none;
     }
 
     .capability-label {
       margin-right: 0.15rem;
       padding: 0 0.25rem;
       color: #f0cf68;
-      font-weight: 700;
+      font-weight: 600;
     }
 
     .capability-pill {
@@ -209,6 +377,21 @@
         margin: 0;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto !important;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
 <body class="antialiased selection:bg-champagne selection:text-obsidian">
@@ -226,16 +409,16 @@
       <!-- Brand Monogram & Identity -->
       <a href="#top" class="flex items-center gap-3.5 group focus:outline-none">
         <div
-          class="w-11 h-11 rounded-full border border-champagne/60 bg-charcoal/90 flex items-center justify-center font-serif text-lg font-semibold tracking-widest text-champagne group-hover:bg-champagne group-hover:text-obsidian transition-colors duration-300"
+          class="w-11 h-11 rounded-full border border-champagne/60 bg-charcoal/90 flex items-center justify-center font-heading text-lg font-bold tracking-normal text-champagne group-hover:bg-champagne group-hover:text-obsidian transition-colors duration-300"
         >
           I·E
         </div>
         <div class="flex flex-col">
-          <span class="font-display text-xs sm:text-sm font-semibold tracking-[0.18em] text-ivory uppercase">
-            ISRAEL EKPENYONG
+          <span class="font-display text-sm sm:text-base font-semibold tracking-normal text-ivory">
+            Israel Ekpenyong
           </span>
-          <span class="text-[10px] sm:text-[11px] tracking-[0.2em] text-mutedIvory uppercase">
-            AI FILMMAKER · VISUAL STORYTELLER
+          <span class="text-[11px] sm:text-xs tracking-normal text-mutedIvory">
+            AI filmmaker · Visual storyteller
           </span>
         </div>
       </a>
@@ -244,32 +427,34 @@
       <nav class="hidden md:flex items-center gap-9" aria-label="Primary Navigation">
         <a
           href="#work"
-          class="text-xs font-display tracking-[0.22em] text-ivory/80 hover:text-champagne transition-colors uppercase"
+          class="text-sm font-display font-medium tracking-normal text-ivory/80 hover:text-champagne transition-colors"
         >
-          WORK
+          Work
         </a>
         <a
           href="#expertise"
-          class="text-xs font-display tracking-[0.22em] text-ivory/80 hover:text-champagne transition-colors uppercase"
+          class="text-sm font-display font-medium tracking-normal text-ivory/80 hover:text-champagne transition-colors"
         >
-          EXPERTISE
+          Expertise
         </a>
         <a
           href="#about"
-          class="text-xs font-display tracking-[0.22em] text-ivory/80 hover:text-champagne transition-colors uppercase"
+          class="text-sm font-display font-medium tracking-normal text-ivory/80 hover:text-champagne transition-colors"
         >
-          ABOUT
+          About
         </a>
       </nav>
 
       <!-- Desktop CTA + Mobile Hamburger -->
       <div class="flex items-center gap-3">
         <a
-          href="#contact"
-          class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-champagne text-obsidian font-display text-xs font-semibold tracking-[0.16em] uppercase hover:bg-champagneLight transition-all duration-300 shadow-[0_0_25px_rgba(212,175,55,0.22)]"
+          href="https://wa.me/37360241402"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="roll-cta hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-champagne text-obsidian font-display text-sm font-medium tracking-normal normal-case hover:bg-champagneLight transition-all duration-300 shadow-[0_0_25px_rgba(212,175,55,0.22)]"
         >
-          <span>LET'S TALK</span>
-          <span aria-hidden="true">↗</span>
+          <span class="cta-label-roll"><span>Let's talk</span><span aria-hidden="true">Let's talk</span></span>
+          <span class="cta-arrow" aria-hidden="true">↗</span>
         </a>
 
         <!-- Mobile Menu Button -->
@@ -295,30 +480,32 @@
       <div class="flex flex-col space-y-4">
         <a
           href="#work"
-          class="mobile-nav-link font-display text-sm tracking-[0.24em] text-ivory hover:text-champagne py-1 uppercase"
+          class="mobile-nav-link font-display text-base font-medium tracking-normal text-ivory hover:text-champagne py-1"
         >
-          01 / WORK
+          Work
         </a>
         <a
           href="#expertise"
-          class="mobile-nav-link font-display text-sm tracking-[0.24em] text-ivory hover:text-champagne py-1 uppercase"
+          class="mobile-nav-link font-display text-base font-medium tracking-normal text-ivory hover:text-champagne py-1"
         >
-          02 / EXPERTISE
+          Expertise
         </a>
         <a
           href="#about"
-          class="mobile-nav-link font-display text-sm tracking-[0.24em] text-ivory hover:text-champagne py-1 uppercase"
+          class="mobile-nav-link font-display text-base font-medium tracking-normal text-ivory hover:text-champagne py-1"
         >
-          03 / ABOUT
+          About
         </a>
       </div>
       <div class="pt-3 border-t border-hairline">
         <a
-          href="#contact"
-          class="mobile-nav-link w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-champagne text-obsidian font-display text-xs font-semibold tracking-[0.18em] uppercase"
+          href="https://wa.me/37360241402"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="roll-cta mobile-nav-link w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-champagne text-obsidian font-display text-sm font-medium tracking-normal normal-case"
         >
-          <span>LET'S TALK</span>
-          <span>↗</span>
+          <span class="cta-label-roll"><span>Let's talk</span><span aria-hidden="true">Let's talk</span></span>
+          <span class="cta-arrow" aria-hidden="true">↗</span>
         </a>
       </div>
     </div>
@@ -344,20 +531,20 @@
         <div class="lg:col-span-7 max-w-4xl space-y-7 z-10">
           <!-- Eyebrow -->
           <!-- Display Headline -->
-          <h1 class="font-instrument text-5xl sm:text-7xl xl:text-[5.5rem] font-normal leading-[0.96] tracking-[-0.02em] text-ivory">
-            Israel
-            <span class="block font-normal text-champagneLight">Ekpenyong</span>
+          <h1 class="reveal-heading reveal-hero font-heading text-5xl sm:text-7xl xl:text-[5.5rem] font-extrabold leading-[0.95] tracking-[-0.04em] text-[#F2EFE9]">
+            <span class="reveal-mask"><span class="reveal-line">Israel</span></span>
+            <span class="reveal-mask"><span class="reveal-line">Ekpenyong</span></span>
           </h1>
 
           <!-- Role Tags -->
-          <div class="flex flex-wrap items-center gap-3 font-display text-xs sm:text-sm tracking-[0.22em] text-ivory/90 uppercase">
-            <span>AI FILMMAKER</span>
+          <div class="flex flex-wrap items-center gap-3 font-display text-sm sm:text-base font-medium tracking-normal text-ivory/90">
+            <span>AI filmmaker</span>
             <span class="text-champagne">✳</span>
-            <span>VISUAL STORYTELLER</span>
+            <span>Visual storyteller</span>
           </div>
 
           <!-- Positioning Statement -->
-          <p class="max-w-xl text-base sm:text-lg text-mutedIvory leading-relaxed tracking-[0.03em]">
+          <p class="max-w-xl text-base sm:text-lg text-mutedIvory leading-relaxed tracking-normal">
             I direct and cut narrative AI films, mythic lore documentaries, and automotive history pieces—built frame by
             frame in Kling, Runway, and DaVinci Resolve.
           </p>
@@ -366,23 +553,24 @@
           <div class="pt-2 flex flex-wrap items-center gap-4">
             <a
               href="#contact"
-              class="inline-flex items-center gap-2.5 px-7 py-4 rounded-full border border-ivory/25 bg-charcoal/60 text-ivory font-display text-xs font-semibold tracking-[0.18em] uppercase hover:border-champagne hover:text-champagne transition-all duration-300"
+              class="roll-cta inline-flex items-center gap-2.5 px-7 py-4 rounded-full border border-ivory/25 bg-charcoal/60 text-ivory font-display text-sm font-medium tracking-normal normal-case hover:border-champagne hover:text-champagne transition-all duration-300"
             >
-              <span>LET'S WORK TOGETHER</span>
-              <span aria-hidden="true">↗</span>
+              <span class="cta-label-roll"><span>Let's work together</span><span aria-hidden="true">Let's work together</span></span>
+              <span class="cta-arrow" aria-hidden="true">↗</span>
             </a>
           </div>
 
           <button
             type="button"
             onclick="openProjectModal(0)"
+            id="playReelTrigger"
             aria-label="Play featured showreel"
-            class="inline-flex items-center gap-3 text-left text-ivory/85 hover:text-champagne transition-colors"
+            class="play-reel-trigger inline-flex items-center gap-3 text-left text-ivory/85 hover:text-champagne transition-colors"
           >
-            <span class="w-10 h-10 shrink-0 rounded-full border border-champagne/60 text-champagne flex items-center justify-center" aria-hidden="true">▶</span>
+            <span class="play-reel-icon w-10 h-10 shrink-0 rounded-full border border-champagne/60 text-champagne flex items-center justify-center" aria-hidden="true">▶</span>
             <span>
-              <span class="block font-display text-[10px] tracking-[0.2em] uppercase">Play director's reel</span>
-              <span class="block font-serif italic text-base">Mythology, Machines &amp; Motion</span>
+              <span class="block font-display text-xs font-medium">Play director's reel</span>
+              <span class="block font-display text-base">Mythology, Machines &amp; Motion</span>
             </span>
           </button>
 
@@ -395,8 +583,8 @@
               aria-label="Visit the Enochian Lore YouTube channel"
               class="group"
             >
-              <p class="font-serif text-2xl sm:text-3xl text-ivory group-hover:text-champagneLight transition-colors">BIBLICAL</p>
-              <p class="font-mono text-[9px] tracking-[0.08em] text-mutedIvory uppercase mt-0.5 group-hover:text-ivory transition-colors">ENOCHIAN LORE ↗</p>
+              <p class="channel-link-title font-display text-sm sm:text-base font-semibold text-ivory group-hover:text-champagneLight transition-colors">Enochian Lore ↗</p>
+              <p class="font-display text-xs text-mutedIvory mt-0.5 group-hover:text-ivory transition-colors">Biblical lore</p>
             </a>
             <a
               href="https://www.youtube.com/@Therollingchassis"
@@ -405,8 +593,8 @@
               aria-label="Visit The Rolling Chassis YouTube channel"
               class="group"
             >
-              <p class="font-serif text-2xl sm:text-3xl text-champagne group-hover:text-champagneLight transition-colors">CAR</p>
-              <p class="font-mono text-[9px] tracking-[0.08em] text-mutedIvory uppercase mt-0.5 group-hover:text-ivory transition-colors">ROLLING CHASSIS ↗</p>
+              <p class="channel-link-title font-display text-sm sm:text-base font-semibold text-champagne group-hover:text-champagneLight transition-colors">Rolling Chassis ↗</p>
+              <p class="font-display text-xs text-mutedIvory mt-0.5 group-hover:text-ivory transition-colors">Automotive</p>
             </a>
             <a
               href="https://www.youtube.com/@IZZYSTUDIO-26"
@@ -415,8 +603,8 @@
               aria-label="Visit the Izzy Studio YouTube channel"
               class="group"
             >
-              <p class="font-serif text-2xl sm:text-3xl text-ivory group-hover:text-champagneLight transition-colors">MOVIE</p>
-              <p class="font-mono text-[9px] tracking-[0.08em] text-mutedIvory uppercase mt-0.5 group-hover:text-ivory transition-colors">IZZY STUDIO ↗</p>
+              <p class="channel-link-title font-display text-sm sm:text-base font-semibold text-ivory group-hover:text-champagneLight transition-colors">Izzy Studio ↗</p>
+              <p class="font-display text-xs text-mutedIvory mt-0.5 group-hover:text-ivory transition-colors">Studio</p>
             </a>
           </div>
         </div>
@@ -429,22 +617,17 @@
               alt="Israel Ekpenyong"
               class="w-full h-full object-cover"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-obsidian/60 via-transparent to-transparent"></div>
-            <div class="absolute bottom-5 left-5 right-5">
-              <span class="inline-flex px-3.5 py-1.5 rounded-full bg-obsidian/85 backdrop-blur-md border border-hairline font-display text-[10px] tracking-[0.22em] text-champagne uppercase">
-                AI FILMMAKER · CREATIVE DIRECTOR
-              </span>
-            </div>
           </div>
+          <p class="mt-3 font-display text-sm font-medium text-mutedIvory">AI filmmaker · Creative director</p>
           <a
             href="https://wa.me/37360241402"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Chat with Israel on WhatsApp"
-            class="mt-4 inline-flex w-full items-center justify-center gap-2 px-6 py-3 rounded-full border border-champagne/45 bg-obsidian/80 text-champagne font-display text-[11px] tracking-[0.18em] uppercase hover:bg-champagne hover:text-obsidian transition-colors"
+            class="roll-cta mt-4 inline-flex w-full items-center justify-center gap-2 px-6 py-3 rounded-full border border-champagne/45 bg-obsidian/80 text-champagne font-display text-sm font-medium tracking-normal normal-case hover:bg-champagne hover:text-obsidian transition-colors"
           >
-            <span>CHAT ON WHATSAPP</span>
-            <span aria-hidden="true">↗</span>
+            <span class="cta-label-roll"><span>Chat on WhatsApp</span><span aria-hidden="true">Chat on WhatsApp</span></span>
+            <span class="cta-arrow" aria-hidden="true">↗</span>
           </a>
         </div>
 
@@ -468,14 +651,15 @@
     <section class="py-20 sm:py-28 border-b border-hairline">
       <div class="max-w-6xl mx-auto px-5 sm:px-8">
         <div class="max-w-4xl space-y-6">
-          <p class="font-mono text-[11px] tracking-[0.15em] text-champagne uppercase">
-            THE APPROACH
+          <p class="font-display text-sm font-medium text-mutedIvory">
+            The approach
           </p>
-          <h2 class="font-instrument font-normal text-3xl sm:text-4xl lg:text-5xl leading-[1.1] tracking-[-0.02em] text-ivory">
-            Generative video fails when every shot looks like a screensaver. I treat AI clips like raw dailies—cutting
-            on action, matching grain and color in Resolve, and building the emotion in the sound mix.
+          <h2 class="reveal-heading font-heading font-semibold text-3xl sm:text-4xl lg:text-5xl leading-[1.1] tracking-[-0.03em] text-ivory">
+            <span class="reveal-mask"><span class="reveal-line">Generative video fails when every shot looks like a screensaver.</span></span>
+            <span class="reveal-mask"><span class="reveal-line">I treat AI clips like raw dailies—cutting on action, matching grain and color in Resolve,</span></span>
+            <span class="reveal-mask"><span class="reveal-line">and building the emotion in the sound mix.</span></span>
           </h2>
-          <p class="text-mutedIvory text-base sm:text-lg max-w-2xl leading-relaxed font-light">
+          <p class="text-mutedIvory text-base sm:text-lg max-w-2xl leading-relaxed font-normal">
             Generative tools can produce endless frames, but cinema lives in restraint—narrative tension, lens
             consistency, rhythmic cuts, and atmospheric sound. Every piece is crafted like a short film first.
           </p>
@@ -484,19 +668,19 @@
         <ol class="mt-10 grid grid-cols-2 sm:grid-cols-4 border-t border-hairline pt-5 gap-x-4 gap-y-5">
           <li class="flex items-baseline gap-2.5">
             <span class="font-mono text-[10px] tracking-[0.08em] text-champagne">01</span>
-            <span class="font-display text-xs tracking-[0.12em] text-ivory uppercase">Creative concept</span>
+            <span class="font-display text-sm font-medium text-ivory">Creative concept</span>
           </li>
           <li class="flex items-baseline gap-2.5">
             <span class="font-mono text-[10px] tracking-[0.08em] text-champagne">02</span>
-            <span class="font-display text-xs tracking-[0.12em] text-ivory uppercase">AI generation</span>
+            <span class="font-display text-sm font-medium text-ivory">AI generation</span>
           </li>
           <li class="flex items-baseline gap-2.5">
             <span class="font-mono text-[10px] tracking-[0.08em] text-champagne">03</span>
-            <span class="font-display text-xs tracking-[0.12em] text-ivory uppercase">Edit &amp; color</span>
+            <span class="font-display text-sm font-medium text-ivory">Edit &amp; color</span>
           </li>
           <li class="flex items-baseline gap-2.5">
             <span class="font-mono text-[10px] tracking-[0.08em] text-champagne">04</span>
-            <span class="font-display text-xs tracking-[0.12em] text-ivory uppercase">Final frame</span>
+            <span class="font-display text-sm font-medium text-ivory">Final frame</span>
           </li>
         </ol>
       </div>
@@ -510,12 +694,15 @@
         <!-- Section Header & Filter Bar -->
         <div class="mb-9 space-y-6">
           <div class="space-y-3">
-            <p class="font-mono text-[11px] tracking-[0.15em] text-champagne uppercase">
-              01 / SELECTED WORK
+            <p class="font-display text-sm font-medium text-mutedIvory">
+              <span class="font-mono text-xs text-champagne">01</span> / Selected work
             </p>
-            <h2 class="font-instrument font-normal text-4xl sm:text-6xl tracking-[-0.02em] text-ivory">
-              Selected <span class="italic text-champagneLight">works.</span>
+            <h2 class="reveal-heading font-heading font-semibold text-4xl sm:text-6xl tracking-[-0.03em] text-ivory">
+              <span class="reveal-mask"><span class="reveal-line">Selected <span class="text-champagneLight">works.</span></span></span>
             </h2>
+            <p class="max-w-3xl text-sm sm:text-base leading-relaxed text-mutedIvory">
+              A curated archive of long-form mythic films, automotive engineering documentaries, and commissioned 9:16 campaigns—each cut, graded, and sound-designed by hand.
+            </p>
           </div>
 
           <!-- Category Filter Pills -->
@@ -528,51 +715,51 @@
             <button
               type="button"
               data-filter="ALL"
-              class="filter-btn active shrink-0 px-3 py-2 rounded-full font-display text-[10px] tracking-[0.12em] whitespace-nowrap uppercase transition-all bg-champagne text-obsidian font-semibold"
+              class="filter-btn active shrink-0 px-3 py-2 rounded-full font-display text-sm font-medium tracking-normal whitespace-nowrap normal-case bg-champagne text-obsidian font-semibold"
             >
-              ALL (13)
+              All (14)
             </button>
             <button
               type="button"
-              data-filter="CINEMATIC LORE"
-              class="filter-btn shrink-0 px-3 py-2 rounded-full font-display text-[10px] tracking-[0.12em] whitespace-nowrap uppercase transition-all border border-hairline bg-charcoal/70 text-ivory/80 hover:border-champagne/60 hover:text-ivory"
+              data-filter="Cinematic lore"
+              class="filter-btn shrink-0 px-3 py-2 rounded-full font-display text-sm font-medium tracking-normal whitespace-nowrap normal-case border border-hairline bg-charcoal/70 text-ivory/80 hover:border-champagne/60 hover:text-ivory"
             >
-              CINEMATIC LORE
+              Cinematic lore
             </button>
             <button
               type="button"
-              data-filter="SHORT FILM"
-              class="filter-btn shrink-0 px-3 py-2 rounded-full font-display text-[10px] tracking-[0.12em] whitespace-nowrap uppercase transition-all border border-hairline bg-charcoal/70 text-ivory/80 hover:border-champagne/60 hover:text-ivory"
+              data-filter="Short film"
+              class="filter-btn shrink-0 px-3 py-2 rounded-full font-display text-sm font-medium tracking-normal whitespace-nowrap normal-case border border-hairline bg-charcoal/70 text-ivory/80 hover:border-champagne/60 hover:text-ivory"
             >
-              SHORT FILM
+              Short film
             </button>
             <button
               type="button"
-              data-filter="AUTOMOTIVE"
-              class="filter-btn shrink-0 px-3 py-2 rounded-full font-display text-[10px] tracking-[0.12em] whitespace-nowrap uppercase transition-all border border-hairline bg-charcoal/70 text-ivory/80 hover:border-champagne/60 hover:text-ivory"
+              data-filter="Automotive"
+              class="filter-btn shrink-0 px-3 py-2 rounded-full font-display text-sm font-medium tracking-normal whitespace-nowrap normal-case border border-hairline bg-charcoal/70 text-ivory/80 hover:border-champagne/60 hover:text-ivory"
             >
-              AUTOMOTIVE
+              Automotive
             </button>
             <button
               type="button"
-              data-filter="BRANDED & FASHION"
-              class="filter-btn shrink-0 px-3 py-2 rounded-full font-display text-[10px] tracking-[0.12em] whitespace-nowrap uppercase transition-all border border-hairline bg-charcoal/70 text-ivory/80 hover:border-champagne/60 hover:text-ivory"
+              data-filter="Branded & fashion"
+              class="filter-btn shrink-0 px-3 py-2 rounded-full font-display text-sm font-medium tracking-normal whitespace-nowrap normal-case border border-hairline bg-charcoal/70 text-ivory/80 hover:border-champagne/60 hover:text-ivory"
             >
-              BRANDED & FASHION
+              Branded &amp; fashion
             </button>
             <button
               type="button"
-              data-filter="AI MUSE"
-              class="filter-btn shrink-0 px-3 py-2 rounded-full font-display text-[10px] tracking-[0.12em] whitespace-nowrap uppercase transition-all border border-hairline bg-charcoal/70 text-ivory/80 hover:border-champagne/60 hover:text-ivory"
+              data-filter="AI Muse"
+              class="filter-btn shrink-0 px-3 py-2 rounded-full font-display text-sm font-medium tracking-normal whitespace-nowrap normal-case border border-hairline bg-charcoal/70 text-ivory/80 hover:border-champagne/60 hover:text-ivory"
             >
-              AI MUSE
+              AI muse
             </button>
             <button
               type="button"
-              data-filter="AI FILMMAKING"
-              class="filter-btn shrink-0 px-3 py-2 rounded-full font-display text-[10px] tracking-[0.12em] whitespace-nowrap uppercase transition-all border border-hairline bg-charcoal/70 text-ivory/80 hover:border-champagne/60 hover:text-ivory"
+              data-filter="AI Filmmaking"
+              class="filter-btn shrink-0 px-3 py-2 rounded-full font-display text-sm font-medium tracking-normal whitespace-nowrap normal-case border border-hairline bg-charcoal/70 text-ivory/80 hover:border-champagne/60 hover:text-ivory"
             >
-              AI FILMMAKING
+              AI filmmaking
             </button>
           </div>
         </div>
@@ -591,7 +778,7 @@
             id="toggleProjectsButton"
             aria-controls="portfolioGrid"
             aria-expanded="false"
-            class="hidden px-5 py-3 rounded-full border border-hairline text-ivory/85 font-display text-[11px] tracking-[0.16em] uppercase hover:border-champagne hover:text-champagne transition-colors"
+            class="hidden px-5 py-3 rounded-full border border-hairline text-ivory/85 font-display text-sm font-medium tracking-normal hover:border-champagne hover:text-champagne transition-colors"
           >
             View all projects
           </button>
@@ -605,30 +792,30 @@
     <section id="expertise" class="py-20 sm:py-28 border-t border-hairline">
       <div class="max-w-7xl mx-auto px-5 sm:px-8">
         <div class="max-w-3xl mb-14 space-y-3">
-          <p class="font-mono text-[11px] tracking-[0.15em] text-champagne uppercase">
-            02 / CREATIVE CAPABILITIES
+          <p class="font-display text-sm font-medium text-mutedIvory">
+            <span class="font-mono text-xs text-champagne">02</span> / Creative capabilities
           </p>
-          <h2 class="font-instrument font-normal text-4xl sm:text-6xl tracking-[-0.02em] text-ivory">
-            Creative <span class="italic text-champagneLight">capabilities.</span>
+          <h2 class="reveal-heading font-heading font-semibold text-4xl sm:text-6xl tracking-[-0.03em] text-ivory">
+            <span class="reveal-mask"><span class="reveal-line">Creative <span class="text-champagneLight">capabilities.</span></span></span>
           </h2>
         </div>
 
         <!-- Numbered Accordion/Hover Rows -->
-        <div class="divide-y divide-hairline border-y border-hairline">
+        <div class="expertise-list divide-y divide-hairline border-y border-hairline">
           <!-- 01 -->
           <div
-            class="group py-6 sm:py-7 px-4 sm:px-6 rounded-2xl hover:bg-charcoal/70 transition-colors duration-300 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center"
+            class="expertise-row group py-6 sm:py-7 px-4 sm:px-6 rounded-2xl hover:bg-charcoal/70 transition-colors duration-300 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center"
           >
-            <div class="lg:col-span-2 font-serif text-3xl sm:text-4xl text-champagne italic">
+            <div class="lg:col-span-2 font-mono text-xl sm:text-2xl text-champagne">
               01 —
             </div>
             <div class="lg:col-span-5">
-              <h3 class="font-serif text-2xl sm:text-3xl text-ivory group-hover:text-champagneLight transition-colors">
-                CREATIVE DIRECTION & POST
+              <h3 class="font-heading font-semibold text-2xl sm:text-3xl text-ivory group-hover:text-champagneLight transition-colors">
+                Creative direction &amp; post
               </h3>
             </div>
             <div class="lg:col-span-5">
-              <p class="text-mutedIvory text-sm sm:text-base leading-relaxed font-light">
+              <p class="text-mutedIvory text-sm sm:text-base leading-relaxed font-normal">
                 From first frame to final mix. Visual direction, scripts, DaVinci Resolve grades, CapCut montages,
                 and layered foley that ties every frame together.
               </p>
@@ -637,18 +824,18 @@
 
           <!-- 02 -->
           <div
-            class="group py-6 sm:py-7 px-4 sm:px-6 rounded-2xl hover:bg-charcoal/70 transition-colors duration-300 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center"
+            class="expertise-row group py-6 sm:py-7 px-4 sm:px-6 rounded-2xl hover:bg-charcoal/70 transition-colors duration-300 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center"
           >
-            <div class="lg:col-span-2 font-serif text-3xl sm:text-4xl text-champagne italic">
+            <div class="lg:col-span-2 font-mono text-xl sm:text-2xl text-champagne">
               02 —
             </div>
             <div class="lg:col-span-5">
-              <h3 class="font-serif text-2xl sm:text-3xl text-ivory group-hover:text-champagneLight transition-colors">
-                SHORT-FORM & MICRO-DRAMAS
+              <h3 class="font-heading font-semibold text-2xl sm:text-3xl text-ivory group-hover:text-champagneLight transition-colors">
+                Short-form &amp; micro-dramas
               </h3>
             </div>
             <div class="lg:col-span-5">
-              <p class="text-mutedIvory text-sm sm:text-base leading-relaxed font-light">
+              <p class="text-mutedIvory text-sm sm:text-base leading-relaxed font-normal">
                 Built to stop the scroll. 9:16 hooks, episodic micro-dramas, and historical and mechanical stories
                 paced to hold attention on Reels, Shorts, and TikTok.
               </p>
@@ -657,18 +844,18 @@
 
           <!-- 03 -->
           <div
-            class="group py-6 sm:py-7 px-4 sm:px-6 rounded-2xl hover:bg-charcoal/70 transition-colors duration-300 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center"
+            class="expertise-row group py-6 sm:py-7 px-4 sm:px-6 rounded-2xl hover:bg-charcoal/70 transition-colors duration-300 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center"
           >
-            <div class="lg:col-span-2 font-serif text-3xl sm:text-4xl text-champagne italic">
+            <div class="lg:col-span-2 font-mono text-xl sm:text-2xl text-champagne">
               03 —
             </div>
             <div class="lg:col-span-5">
-              <h3 class="font-serif text-2xl sm:text-3xl text-ivory group-hover:text-champagneLight transition-colors">
-                AUTOMOTIVE & PRODUCT VISUALS
+              <h3 class="font-heading font-semibold text-2xl sm:text-3xl text-ivory group-hover:text-champagneLight transition-colors">
+                Automotive &amp; product visuals
               </h3>
             </div>
             <div class="lg:col-span-5">
-              <p class="text-mutedIvory text-sm sm:text-base leading-relaxed font-light">
+              <p class="text-mutedIvory text-sm sm:text-base leading-relaxed font-normal">
                 Metal that gleams, motion that bites. Heritage car docs and high-spec commercials that capture the
                 reflections, the blur, and the engineering soul.
               </p>
@@ -677,18 +864,18 @@
 
           <!-- 04 -->
           <div
-            class="group py-6 sm:py-7 px-4 sm:px-6 rounded-2xl hover:bg-charcoal/70 transition-colors duration-300 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center"
+            class="expertise-row group py-6 sm:py-7 px-4 sm:px-6 rounded-2xl hover:bg-charcoal/70 transition-colors duration-300 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center"
           >
-            <div class="lg:col-span-2 font-serif text-3xl sm:text-4xl text-champagne italic">
+            <div class="lg:col-span-2 font-mono text-xl sm:text-2xl text-champagne">
               04 —
             </div>
             <div class="lg:col-span-5">
-              <h3 class="font-serif text-2xl sm:text-3xl text-ivory group-hover:text-champagneLight transition-colors">
-                AI FILM & CINEMATIC LORE
+              <h3 class="font-heading font-semibold text-2xl sm:text-3xl text-ivory group-hover:text-champagneLight transition-colors">
+                AI film &amp; cinematic lore
               </h3>
             </div>
             <div class="lg:col-span-5">
-              <p class="text-mutedIvory text-sm sm:text-base leading-relaxed font-light">
+              <p class="text-mutedIvory text-sm sm:text-base leading-relaxed font-normal">
                 Worlds, characters, and stories built to be felt. Consistent casts, mythic trailers, and long-form
                 documentaries made with Veo, Kling, Runway, and Midjourney.
               </p>
@@ -712,27 +899,24 @@
               alt="Israel Ekpenyong — Creative Director & AI Filmmaker"
               class="w-full h-full object-cover"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent"></div>
-            <div class="absolute bottom-5 left-5 right-5 flex items-center justify-between">
-              <span class="px-3.5 py-1.5 rounded-full bg-obsidian/85 backdrop-blur-md border border-hairline font-display text-[10px] tracking-[0.22em] text-champagne uppercase">
-                DIRECTOR · EDITOR
-              </span>
-              <span class="font-serif italic text-ivory/90 text-base">I·E Studio</span>
-            </div>
+          </div>
+          <div class="mt-3 flex items-center justify-between gap-4 text-sm">
+            <span class="font-display font-medium text-ivory">Director · editor</span>
+            <span class="font-display text-mutedIvory">I·E Studio</span>
           </div>
         </div>
 
         <!-- Right Bio & Metadata Grid -->
         <div class="lg:col-span-7 space-y-7">
-          <p class="font-mono text-[11px] tracking-[0.15em] text-champagne uppercase">
-            03 / ABOUT
+          <p class="font-display text-sm font-medium text-mutedIvory">
+            <span class="font-mono text-xs text-champagne">03</span> / About
           </p>
 
-          <h2 class="font-instrument font-normal text-4xl sm:text-6xl tracking-[-0.02em] text-ivory leading-[1.05]">
-            Hi, I'm <span class="italic text-champagneLight">Israel.</span>
+          <h2 class="reveal-heading font-heading font-semibold text-4xl sm:text-6xl tracking-[-0.03em] text-ivory leading-[1.05]">
+            <span class="reveal-mask"><span class="reveal-line">Hi, I'm <span class="text-champagneLight">Israel.</span></span></span>
           </h2>
 
-          <div class="space-y-4 text-mutedIvory text-base sm:text-lg leading-relaxed font-light">
+          <div class="space-y-4 text-mutedIvory text-base sm:text-lg leading-relaxed font-normal">
             <p>
               I'm an AI filmmaker, visual storyteller, and video editor obsessed with how modern generative cinema can
               evoke genuine human awe. My work bridges deep-lore mythological worlds, heritage automotive engineering,
@@ -743,19 +927,19 @@
           <!-- Metadata Grid -->
           <div class="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 border-t border-hairline">
             <div class="pt-3">
-              <p class="font-display text-[10px] tracking-[0.24em] text-champagne uppercase">
-                BASED IN
+              <p class="font-display text-xs font-medium text-mutedIvory">
+                Based in
               </p>
-              <p class="font-serif text-base text-ivory mt-1">
+              <p class="font-display text-base text-ivory mt-1">
                 Chișinău, Moldova
               </p>
             </div>
 
             <div class="pt-3">
-              <p class="font-display text-[10px] tracking-[0.24em] text-champagne uppercase">
-                WORKING WITH
+              <p class="font-display text-xs font-medium text-mutedIvory">
+                Working with
               </p>
-              <p class="font-serif text-base text-ivory mt-1">
+              <p class="font-display text-base text-ivory mt-1">
                 Clients Worldwide / Remote
               </p>
             </div>
@@ -775,15 +959,16 @@
             aria-hidden="true"
           ></div>
 
-          <p class="font-mono text-[11px] tracking-[0.15em] text-champagne uppercase relative z-10">
-            04 / START A PROJECT
+          <p class="font-display text-sm font-medium text-mutedIvory relative z-10">
+            <span class="font-mono text-xs text-champagne">04</span> / Start a project
           </p>
 
-          <h2 class="font-instrument font-normal text-4xl sm:text-6xl lg:text-7xl tracking-[-0.02em] text-ivory leading-[1.04] max-w-3xl mx-auto relative z-10">
-            Let's make something <span class="italic text-champagneLight">extraordinary.</span>
+          <h2 class="reveal-heading font-heading font-semibold text-4xl sm:text-6xl lg:text-7xl tracking-[-0.03em] text-ivory leading-[1.04] max-w-3xl mx-auto relative z-10">
+            <span class="reveal-mask"><span class="reveal-line">Let's make something</span></span>
+            <span class="reveal-mask"><span class="reveal-line text-champagneLight">extraordinary.</span></span>
           </h2>
 
-          <p class="text-mutedIvory text-base sm:text-lg max-w-xl mx-auto font-light relative z-10">
+          <p class="text-mutedIvory text-base sm:text-lg max-w-xl mx-auto font-normal relative z-10">
             Available for AI film direction, branded visual campaigns, automotive storytelling, and retained short-form
             content production worldwide.
           </p>
@@ -792,7 +977,7 @@
           <div class="pt-3 flex flex-wrap items-center justify-center gap-4 relative z-10">
             <a
               href="mailto:israeljaxson@gmail.com"
-              class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-champagne text-obsidian font-display text-xs sm:text-sm font-semibold tracking-[0.16em] uppercase hover:bg-champagneLight transition-all shadow-[0_0_30px_rgba(212,175,55,0.25)]"
+              class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-champagne text-obsidian font-display text-sm font-medium tracking-normal normal-case hover:bg-champagneLight transition-all shadow-[0_0_30px_rgba(212,175,55,0.25)]"
             >
               <span>israeljaxson@gmail.com</span>
               <span>↗</span>
@@ -801,25 +986,25 @@
               href="https://wa.me/37360241402"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 px-6 py-4 rounded-full border border-hairline bg-obsidian/80 text-ivory font-display text-xs tracking-[0.18em] uppercase hover:border-champagne hover:text-champagne transition-colors"
+              class="roll-cta inline-flex items-center gap-2 px-6 py-4 rounded-full border border-hairline bg-obsidian/80 text-ivory font-display text-sm font-medium tracking-normal normal-case hover:border-champagne hover:text-champagne transition-colors"
             >
-              <span>CHAT ON WHATSAPP</span>
-              <span>↗</span>
+              <span class="cta-label-roll"><span>Chat on WhatsApp</span><span aria-hidden="true">Chat on WhatsApp</span></span>
+              <span class="cta-arrow" aria-hidden="true">↗</span>
             </a>
             <button
               type="button"
               id="copyEmailBtn"
               onclick="copyEmailToClipboard()"
-              class="inline-flex items-center gap-2 px-6 py-4 rounded-full border border-hairline bg-obsidian/80 text-ivory font-display text-xs tracking-[0.18em] uppercase hover:border-champagne hover:text-champagne transition-colors"
+              class="inline-flex items-center gap-2 px-6 py-4 rounded-full border border-hairline bg-obsidian/80 text-ivory font-display text-sm font-medium tracking-normal normal-case hover:border-champagne hover:text-champagne transition-colors"
             >
-              <span id="copyEmailText">COPY EMAIL</span>
+              <span id="copyEmailText">Copy email</span>
             </button>
 
             <a
               href="https://videiro.com/p/israel"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 px-6 py-4 rounded-full border border-hairline bg-obsidian/80 text-ivory font-display text-xs tracking-[0.18em] uppercase hover:border-champagne hover:text-champagne transition-colors"
+              class="inline-flex items-center gap-2 px-6 py-4 rounded-full border border-hairline bg-obsidian/80 text-ivory font-display text-sm font-medium tracking-normal normal-case hover:border-champagne hover:text-champagne transition-colors"
             >
               <span>videiro.com/p/israel</span>
               <span>↗</span>
@@ -838,12 +1023,12 @@
       <!-- Monogram & Copyright -->
       <div class="flex items-center gap-3.5">
         <span
-          class="w-9 h-9 rounded-full border border-champagne/50 flex items-center justify-center font-serif text-sm font-semibold text-champagne"
+          class="w-9 h-9 rounded-full border border-champagne/50 flex items-center justify-center font-heading text-sm font-bold text-champagne"
         >
           I·E
         </span>
-        <span class="font-display text-xs tracking-[0.2em] text-mutedIvory uppercase">
-          © 2026 ISRAEL EKPENYONG. ALL RIGHTS RESERVED.
+        <span class="font-display text-xs text-mutedIvory">
+          © 2026 Israel Ekpenyong. All rights reserved.
         </span>
       </div>
 
@@ -868,11 +1053,11 @@
         <div class="flex items-center gap-3">
           <span
             id="modalCategory"
-            class="px-3 py-1 rounded-full bg-champagne/15 border border-champagne/40 font-mono text-[9px] tracking-[0.08em] text-champagne uppercase"
+            class="px-3 py-1 rounded-full bg-champagne/15 border border-champagne/40 font-display text-xs font-medium text-champagne"
           >
-            CATEGORY
+            Category · format
           </span>
-          <span id="modalDuration" class="font-mono text-xs tracking-[0.08em] text-mutedIvory uppercase">
+          <span id="modalDuration" class="font-display text-xs text-mutedIvory">
             00:00
           </span>
         </div>
@@ -904,18 +1089,27 @@
             playsinline
             preload="metadata"
           ></video>
+          <iframe
+            id="modalYoutubeVideo"
+            class="hidden absolute inset-0 w-full h-full border-0"
+            src="about:blank"
+            title=""
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
           <p id="modalVideoError" class="hidden absolute bottom-4 left-4 right-4 rounded-lg bg-obsidian/90 p-3 text-center text-xs text-ivory">
             This project video could not be played.
           </p>
           <div id="modalSimGradient" class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-obsidian/40 pointer-events-none"></div>
 
           <!-- Simulated Cinema HUD Overlay -->
-          <div id="modalSimHud" class="absolute top-4 left-4 right-4 flex items-center justify-between text-[9px] font-mono tracking-[0.08em] text-ivory/80 uppercase">
+          <div id="modalSimHud" class="absolute top-4 left-4 right-4 flex items-center justify-between text-[10px] font-display text-ivory/80">
             <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-obsidian/75 backdrop-blur-md">
               <span id="playStatusDot" class="w-2 h-2 rounded-full bg-champagne animate-ping"></span>
-              <span id="playStatusLabel">PLAYING DIRECTOR'S CUT PREVIEW</span>
+              <span id="playStatusLabel">Director's cut preview</span>
             </span>
-            <span id="modalAspect" class="px-3 py-1 rounded-full bg-obsidian/75 backdrop-blur-md font-mono tracking-[0.08em]">16:9</span>
+            <span id="modalAspect" class="px-3 py-1 rounded-full bg-obsidian/75 backdrop-blur-md font-mono">16:9</span>
           </div>
 
           <!-- Interactive Play/Pause Toggle Center Control -->
@@ -925,7 +1119,7 @@
             aria-label="Toggle Simulated Playback"
             class="absolute inset-0 m-auto w-16 h-16 rounded-full bg-obsidian/75 border border-champagne/70 text-champagne flex items-center justify-center opacity-90 hover:scale-105 hover:bg-champagne hover:text-obsidian transition-all"
           >
-            <span id="simPlayIcon" class="font-display text-sm font-bold tracking-widest">❚❚</span>
+            <span id="simPlayIcon" class="font-display text-sm font-bold">❚❚</span>
           </button>
 
           <!-- Bottom Timecode Scrubber Bar -->
@@ -933,28 +1127,34 @@
             <div class="w-full h-1.5 rounded-full bg-ivory/20 overflow-hidden">
               <div id="simProgressBar" class="h-full bg-champagne w-1/3 transition-all duration-300"></div>
             </div>
-            <div class="flex items-center justify-between text-[10px] font-mono tracking-[0.08em] text-ivory/80">
-              <span id="simTimecode">00:14 / 01:45</span>
-              <span>24.00 FPS · COLOR GRADED</span>
+            <div class="flex items-center justify-between text-[10px] font-display text-ivory/80">
+              <span id="simTimecode" class="font-mono">00:14 / 01:45</span>
+              <span><span class="font-mono">24.00 fps</span> · Color graded</span>
             </div>
           </div>
         </div>
+        <a
+          id="modalYoutubeFallback"
+          class="hidden w-full items-center justify-center gap-2 rounded-full border border-champagne/50 bg-champagne/10 px-5 py-3 font-display text-sm font-medium normal-case text-champagne transition-colors hover:bg-champagne hover:text-obsidian"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Watch on YouTube ↗
+        </a>
 
-        <!-- Project Brief & Craft Details -->
+        <!-- Project Description & Craft Details -->
         <div class="grid grid-cols-1 md:grid-cols-12 gap-6 pt-2">
           <div class="md:col-span-8 space-y-3">
-            <h3 id="modalTitle" class="font-serif text-3xl sm:text-4xl text-ivory">
+            <h3 id="modalTitle" class="font-heading font-semibold text-3xl sm:text-4xl text-ivory">
               Project Title
             </h3>
-            <p id="modalBrief" class="text-mutedIvory text-sm sm:text-base leading-relaxed font-light">
-              Project description goes here.
-            </p>
+            <p id="modalDescription" class="text-mutedIvory text-sm sm:text-base leading-relaxed font-normal"></p>
           </div>
 
           <div id="modalDetailsPanel" class="md:col-span-4 space-y-4 p-5 rounded-2xl bg-obsidian/80 border border-hairline">
             <div>
-              <p class="font-display text-[10px] tracking-[0.24em] text-champagne uppercase">
-                TOOLS & PIPELINE
+              <p class="font-display text-sm font-medium text-champagne">
+                Tools &amp; pipeline
               </p>
               <div id="modalTools" class="flex flex-wrap gap-2 mt-2.5">
                 <!-- Tool tags injected via JS -->
@@ -962,12 +1162,10 @@
             </div>
 
             <div class="pt-3 border-t border-hairline">
-              <p class="font-display text-[10px] tracking-[0.24em] text-champagne uppercase">
-                CRAFT NOTES
+              <p class="font-display text-sm font-medium text-champagne">
+                Craft notes
               </p>
-              <p id="modalCraft" class="text-xs text-ivory/85 leading-relaxed mt-1.5">
-                Craft notes go here.
-              </p>
+              <p id="modalCraftNotes" class="text-xs text-ivory/85 leading-relaxed mt-1.5"></p>
             </div>
           </div>
         </div>
@@ -984,186 +1182,234 @@
       {
         id: 0,
         title: 'Enoch – The Movie',
-        subtitle: 'Mythology & Apocryphal Lore',
-        category: 'CINEMATIC LORE',
-        duration: '04:18 · TRAILER / CHAPTER I',
-        aspect: '9:16 ANAMORPHIC',
+        subtitle: 'Mythology & apocryphal lore',
+        category: 'Cinematic lore',
+        format: 'Long-form film',
+        duration: '04:18 · Trailer / chapter I',
+        aspect: '9:16',
         video: 'assets/videos/cinematic1-preview.mp4',
         poster: 'assets/image/video-posters/cinematic1.jpg',
-        hideCardDetails: true,
         image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1000&q=80',
         fallback: 'https://placehold.co/900x600/141210/D4AF37?text=ENOCH+-+THE+MOVIE',
-        brief:
-          'An atmospheric AI cinema adaptation chronicling the ancient visions of Enoch, fallen Watchers, and towering antediluvian citadels. Engineered with multi-shot character consistency, deep resonant narration, and theatrical chiaroscuro lighting.',
-        tools: ['Veo', 'Midjourney', 'Runway Gen-3', 'DaVinci Resolve'],
-        craft:
-          'Custom seed-locked character sheets paired with bespoke DaVinci Resolve film emulation LUTs and sub-bass spatial sound design.',
+        description:
+          'An apocryphal-lore film follows Enoch through a world reshaped by the Watchers’ descent and the coming deluge. Fallen angels, prophecy, and human devotion unfold as a vertical cinematic chapter.',
+        tools: ['Veo', 'Midjourney', 'Runway', 'DaVinci Resolve', 'ElevenLabs'],
+        craftNotes:
+          'Character references and shot-level lighting keep the cast coherent across generated scenes. A DaVinci Resolve CST workflow shapes the contrast and grain, while ElevenLabs narration and custom low-end foley carry the chapter’s transitions.',
       },
       {
         id: 1,
-        title: 'Wankel: The Rotary Revolution',
-        subtitle: '16-Min Automotive Documentary',
-        category: 'AUTOMOTIVE',
-        duration: '16:24 · LONG-FORM DOC',
-        aspect: '16:9 CINEMA',
-        image: 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=1000&q=80',
-        fallback: 'https://placehold.co/900x600/121417/D4AF37?text=WANKEL+ROTARY+DOC',
-        brief:
-          'Produced for The Rolling Chassis channel—a 16-minute visual deep dive tracing Felix Wankel’s epitrochoid combustion dream from post-war German prototypes to Mazda’s Le Mans-winning 787B.',
-        tools: ['Kling', 'Midjourney', 'DaVinci Resolve', 'CapCut'],
-        craft:
-          'Blends AI-reconstructed 1950s engineering workshops, cutaway rotor animations, and high-RPM exhaust foley.',
+        title: 'Car Contents',
+        subtitle: 'Automotive stories',
+        category: 'Automotive',
+        format: 'Engineering archive',
+        duration: 'Image collection',
+        aspect: '16:9',
+        cardAspect: 'aspect-[16/9]',
+        imageOnly: true,
+        image: 'assets/image/car-contents.png',
+        fallback: 'assets/image/car-contents.png',
+        description:
+          'A curated slate moves from hidden headlight mechanics and a single-seat three-wheeler to rotary engines, the Honda NSX, Formula 1 rules, and Chevy’s aluminum-block failures. The collection pairs engineering history with concise, vertical-first storytelling.',
+        tools: ['Adobe Firefly', 'Kling AI', 'DaVinci Resolve', 'CapCut'],
+        craftNotes:
+          'Each short is shaped around one mechanical question, with supporting reconstructions cut against archival-style imagery. Resolve CST and color matching unify the sources; custom engine and metal foley give each reveal a tactile finish.',
       },
       {
         id: 5,
         title: 'The Watchers: Flood Chronicles',
-        subtitle: 'Enochian Lore — Chapter II',
-        category: 'CINEMATIC LORE',
-        duration: '06:40 · LORE EPISODE',
-        aspect: '9:16 ANAMORPHIC',
+        subtitle: 'Enochian Lore — chapter II',
+        category: 'Cinematic lore',
+        format: 'Lore episode',
+        duration: '06:40 · Lore episode',
+        aspect: '9:16',
         video: 'assets/videos/cinematic2-preview.mp4',
         poster: 'assets/image/video-posters/cinematic2.jpg',
-        hideCardDetails: true,
         image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=80',
         fallback: 'https://placehold.co/900x600/121110/D4AF37?text=THE+WATCHERS+CHRONICLES',
-        brief:
-          'Second installment in the Enochian Lore universe depicting Mount Hermon’s descent, forged celestial metals, and the impending deluge with sweeping aerial cinematography.',
-        tools: ['Veo', 'Midjourney', 'DaVinci Resolve'],
-        craft:
-          'Volumetric storm lighting, consistent character wardrobe across 40+ generated shots, and orchestral score pacing.',
-      },
-      {
-        id: 6,
-        title: 'Silver Arrows: 1937 Speed Record',
-        subtitle: 'Heritage Motorsport Film',
-        category: 'AUTOMOTIVE',
-        duration: '03:12 · SHORT FILM',
-        aspect: '16:9 CINEMA',
-        image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1000&q=80',
-        fallback: 'https://placehold.co/900x600/131416/D4AF37?text=SILVER+ARROWS+1937',
-        brief:
-          'Recreating the visceral 432 km/h Autobahn speed runs of streamlined 1930s Grand Prix machines with period-accurate aluminum bodywork and cockpit POV immersion.',
-        tools: ['Kling', 'Runway', 'DaVinci Resolve'],
-        craft:
-          'High-velocity tracking shots, metallic specular highlights, and vintage newsreel audio restoration.',
+        description:
+          'A follow-up in the Enochian Lore series traces the Watchers from Mount Hermon to the flood, showing the cost of forbidden knowledge. Celestial scale gives way to a human survival beat as the world darkens.',
+        tools: ['Veo', 'Midjourney', 'Runway', 'DaVinci Resolve', 'ElevenLabs'],
+        craftNotes:
+          'Locked character and wardrobe references hold continuity between generated shots. Volumetric storm layers, a Resolve CST grade, measured narration, and restrained orchestral sound design build the descent without crowding the frame.',
       },
       {
         id: 9,
         title: 'Fashion 1',
-        subtitle: 'Fashion Film',
-        category: 'BRANDED & FASHION',
-        duration: '00:14 · FASHION FILM',
-        aspect: '9:16 VERTICAL',
+        subtitle: 'Athleisure',
+        category: 'Branded & fashion',
+        format: '9:16 fashion film',
+        duration: '00:14 · Fashion film',
+        aspect: '9:16',
         video: 'assets/videos/fashion (1).mp4',
         poster: 'assets/image/video-posters/fashion-1.jpg',
-        brief: '',
-        tools: [],
-        craft: '',
+        description:
+          'A training break moves from a mirror check into the weight room, centering athletic movement, silhouette, and the gym’s lived-in details. The vertical edit keeps the styling clear while retaining a candid social feel.',
+        tools: ['Kling AI', 'Runway', 'DaVinci Resolve', 'CapCut'],
+        craftNotes:
+          'Motion-matched cuts keep the short brisk without losing garment detail. Resolve CST and skin-tone adjustments balance mixed gym lighting; CapCut-safe framing leaves room for platform overlays.',
       },
       {
         id: 10,
         title: 'Fashion 2',
-        subtitle: 'Fashion Film',
-        category: 'BRANDED & FASHION',
-        duration: '00:14 · FASHION FILM',
-        aspect: '9:16 VERTICAL',
+        subtitle: 'Street style',
+        category: 'Branded & fashion',
+        format: '9:16 fashion film',
+        duration: '00:14 · Fashion film',
+        aspect: '9:16',
         video: 'assets/videos/fashion2-preview.mp4',
         poster: 'assets/image/video-posters/fashion-2.jpg',
-        brief: '',
-        tools: [],
-        craft: '',
+        description:
+          'A quiet coffee break on a city stoop becomes a street-style portrait, framed by warm façades and passing urban detail. The cut lets the coat, posture, and natural light carry the campaign.',
+        tools: ['Kling AI', 'Adobe Firefly', 'DaVinci Resolve', 'CapCut'],
+        craftNotes:
+          'Subtle background extensions preserve the grounded street setting while keeping the subject consistent. A warm Resolve grade, restrained transitions, and custom cup and street ambience complete the vertical spot.',
       },
       {
         id: 11,
         title: 'Fashion 3',
-        subtitle: 'Fashion Film',
-        category: 'BRANDED & FASHION',
-        duration: '00:08 · FASHION FILM',
-        aspect: '9:16 VERTICAL',
+        subtitle: 'Lifestyle fashion',
+        category: 'Branded & fashion',
+        format: '9:16 fashion film',
+        duration: '00:08 · Fashion film',
+        aspect: '9:16',
         video: 'assets/videos/fashion (3).mp4',
         poster: 'assets/image/video-posters/fashion-3.jpg',
-        brief: '',
-        tools: [],
-        craft: '',
+        description:
+          'A close portrait in a car turns a relaxed knitwear look into a compact lifestyle spot, pairing soft window light with fabric texture and expression. Restrained pacing gives the look room to register.',
+        tools: ['Kling AI', 'Runway', 'DaVinci Resolve', 'Custom foley'],
+        craftNotes:
+          'Close framing keeps attention on the face, knit texture, and shifting window reflections. Resolve CST and a gentle highlight roll-off preserve the natural light; quiet cabin tone and seat-belt foley add intimacy.',
       },
       {
         id: 12,
         title: 'Cinematic 1',
-        subtitle: 'Short Film',
-        category: 'SHORT FILM',
-        duration: '01:33 · SHORT FILM',
-        aspect: '9:16 VERTICAL',
+        subtitle: 'Mythic short',
+        category: 'Short film',
+        format: '9:16 short film',
+        duration: '01:33 · Short film',
+        aspect: '9:16',
         video: 'assets/videos/cinematic 1.mp4',
         poster: 'assets/image/video-posters/short-film-1.jpg',
-        brief: '',
-        tools: [],
-        craft: '',
+        description:
+          'An angelic figure kneels in a luminous hall beneath a shaft of light, surrounded by silent witnesses. A measured reveal and restrained sound design build a sense of judgment and awe.',
+        tools: ['Kling AI', 'Runway', 'DaVinci Resolve', 'ElevenLabs'],
+        craftNotes:
+          'Symmetrical compositions and controlled light transitions make the central figure the visual anchor. The Resolve CST grade protects the white detail, while sparse narration and custom hall reverb keep the scene intimate.',
       },
       {
         id: 13,
         title: 'Cinematic 2',
-        subtitle: 'Short Film',
-        category: 'SHORT FILM',
-        duration: '02:01 · SHORT FILM',
-        aspect: '9:16 VERTICAL',
+        subtitle: 'Survival short',
+        category: 'Short film',
+        format: '9:16 short film',
+        duration: '02:01 · Short film',
+        aspect: '9:16',
         video: 'assets/videos/cinemaic 2.mp4',
         poster: 'assets/image/video-posters/short-film-2.jpg',
-        brief: '',
-        tools: [],
-        craft: '',
+        description:
+          'A battle-worn guardian shields a child while crossing a rain-darkened landscape, with distant lights hinting at danger behind them. Close coverage and a slow reveal turn the journey into a compact survival story.',
+        tools: ['Kling AI', 'Runway', 'Adobe Firefly', 'DaVinci Resolve'],
+        craftNotes:
+          'Character references preserve the pair’s wardrobe and silhouette across shots. Layered rain, low-frequency impacts, and a cool Resolve CST grade make the passage feel continuous rather than assembled.',
       },
       {
         id: 14,
         title: 'Jet',
-        subtitle: 'AI Muse',
-        category: 'AI MUSE',
-        duration: '00:11 · AI MUSE',
-        aspect: '9:16 VERTICAL',
+        subtitle: 'Luxury fashion',
+        category: 'AI Muse',
+        format: '9:16 lifestyle film',
+        duration: '00:11 · AI muse',
+        aspect: '9:16',
         video: 'assets/videos/jet-preview.mp4',
         poster: 'assets/image/video-posters/jet.jpg',
-        brief: '',
-        tools: [],
-        craft: '',
+        description:
+          'A golden-hour arrival pairs a sequined evening silhouette with the clean lines of a private aircraft. The short moves from the aircraft door to a full-length fashion frame for a concise luxury beat.',
+        tools: ['Kling AI', 'Adobe Firefly', 'DaVinci Resolve', 'CapCut'],
+        craftNotes:
+          'Warm practical light and controlled reflections keep the aircraft and garment readable in the same frame. A Resolve CST grade holds the gold highlights, with a tight CapCut rhythm for a 9:16 campaign finish.',
       },
       {
         id: 15,
         title: 'Mornings',
-        subtitle: 'AI Muse',
-        category: 'AI MUSE',
-        duration: '00:11 · AI MUSE',
-        aspect: '9:16 VERTICAL',
+        subtitle: 'Lifestyle portrait',
+        category: 'AI Muse',
+        format: '9:16 lifestyle film',
+        duration: '00:11 · AI muse',
+        aspect: '9:16',
         video: 'assets/videos/mornings-preview.mp4',
         poster: 'assets/image/video-posters/mornings.jpg',
-        brief: '',
-        tools: [],
-        craft: '',
+        description:
+          'A quiet morning portrait holds on a woman in a car as cool daylight and soft window reflections shape the frame. The close composition turns a simple commute into a calm, personal vignette.',
+        tools: ['Kling AI', 'Runway', 'DaVinci Resolve', 'Custom sound design'],
+        craftNotes:
+          'Subtle camera movement preserves the still, observational mood. A restrained Resolve CST grade keeps skin tones natural, while low-level cabin ambience and soft foley support the pause between cuts.',
       },
       {
         id: 16,
         title: 'Shot 2',
-        subtitle: 'AI Muse',
-        category: 'AI MUSE',
-        duration: '00:10 · AI MUSE',
-        aspect: '9:16 VERTICAL',
+        subtitle: 'Automotive editorial',
+        category: 'AI Muse',
+        format: '9:16 fashion film',
+        duration: '00:10 · AI muse',
+        aspect: '9:16',
         video: 'assets/videos/shot-2-preview.mp4',
         poster: 'assets/image/video-posters/shot-2.jpg',
-        brief: '',
-        tools: [],
-        craft: '',
+        description:
+          'A white evening look is framed beside a classic coupe as a small crowd gathers behind the subject. The street-side composition blends fashion editorial polish with the tension of a candid arrival.',
+        tools: ['Kling AI', 'Adobe Firefly', 'DaVinci Resolve', 'CapCut'],
+        craftNotes:
+          'Layered reference frames maintain the model, dress, and car across the vertical cut. Resolve CST and selective highlight control keep the white fabric clean against the street; custom crowd and engine ambience ground the scene.',
       },
       {
         id: 17,
         title: 'AI Film',
-        subtitle: 'AI Filmmaking',
-        category: 'AI FILMMAKING',
-        duration: '00:12 · AI FILM',
-        aspect: '4:3 LANDSCAPE',
+        subtitle: 'Post-apocalyptic drama',
+        category: 'AI Filmmaking',
+        format: '4:3 short film',
+        duration: '00:12 · AI film',
+        aspect: '4:3',
         cardAspect: 'aspect-[4/3]',
         video: 'assets/videos/ai-film-preview.mp4',
         poster: 'assets/image/video-posters/ai-film.jpg',
-        brief: '',
-        tools: [],
-        craft: '',
+        description:
+          'A lone figure stands above a field of rubble as smoke gathers over a ruined settlement. The wide frame holds on the aftermath, setting a stark tone for a post-apocalyptic story.',
+        tools: ['Kling AI', 'Runway', 'ElevenLabs', 'DaVinci Resolve'],
+        craftNotes:
+          'A consistent hero reference and layered smoke preserve scale across generated shots. Resolve CST and contrast shaping separate the figure from the ash, while ElevenLabs narration and custom debris foley add story context.',
+      },
+      {
+        id: 18,
+        title: 'Angel vs Satan',
+        subtitle: 'Mythic confrontation',
+        category: 'AI Filmmaking',
+        format: '9:16 short film',
+        duration: '00:15 · AI film',
+        aspect: '9:16',
+        video: 'assets/videos/angel vs satan .mp4',
+        poster: 'assets/image/video-posters/angel-vs-satan.jpg',
+        description:
+          'A dark-winged figure hangs beneath a break in storm clouds, framed against a distant shaft of light. The vertical short turns that stark silhouette into a mythic confrontation between opposing forces.',
+        tools: ['Kling AI', 'Adobe Firefly', 'Runway', 'DaVinci Resolve'],
+        craftNotes:
+          'Cloud layers and silhouette continuity give the central figure a clear read against the sky. A Resolve CST grade shapes the cool shadows; custom wind, wing, and impact foley gives the brief encounter weight.',
+      },
+      {
+        id: 19,
+        title: 'Crown of Ash',
+        subtitle: 'Post-apocalyptic drama',
+        category: 'AI Filmmaking',
+        format: '16:9 short film',
+        duration: '00:12 · AI film',
+        aspect: '16:9',
+        cardAspect: 'aspect-[16/9]',
+        video: 'assets/videos/crown of ash.mp4',
+        poster: 'assets/image/video-posters/crown-of-ash.jpg',
+        description:
+          'An armed wanderer stands above a ruined city at dusk as shadowed figures watch from the foreground. The landscape and low sun frame a story of survival, power, and the cost of a new reign.',
+        tools: ['Kling AI', 'Runway', 'DaVinci Resolve', 'ElevenLabs', 'Custom foley'],
+        craftNotes:
+          'Foreground silhouettes create depth while a locked hero reference maintains costume continuity. A warm Resolve CST grade balances sunset highlights with ash-dark shadows; narration, wind, and metal impacts build the final mix.',
       },
     ];
 
@@ -1187,7 +1433,7 @@
           (project) => `
           <article
             onclick="openProjectModal(${project.id})"
-            class="group cursor-pointer rounded-3xl overflow-hidden border border-hairline bg-charcoal/75 hover:border-champagne/60 transition-all duration-500 flex flex-col justify-between shadow-lg hover:-translate-y-1"
+            class="project-card group cursor-pointer rounded-3xl overflow-hidden border border-hairline bg-charcoal/75 hover:border-champagne/60 transition-all duration-500 flex flex-col justify-between shadow-lg hover:-translate-y-1"
           >
             <div>
               <!-- Thumbnail Frame -->
@@ -1197,7 +1443,7 @@
                   onerror="this.onerror=null;this.src='${project.fallback}';"
                   alt="${project.title}"
                   loading="lazy"
-                  class="w-full h-full object-cover brightness-85 contrast-110 group-hover:scale-105 transition-transform duration-700"
+                  class="project-card-image w-full h-full object-cover brightness-85 contrast-110"
                 />
                 ${
                   project.video
@@ -1215,14 +1461,18 @@
                 `
                     : ''
                 }
+                ${
+                  project.imageOnly
+                    ? ''
+                    : `
                 <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/20 to-transparent"></div>
 
                 <!-- Top Badges -->
                 <div class="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between gap-2">
-                  <span class="px-3 py-1 rounded-full bg-obsidian/80 backdrop-blur-md border border-hairline font-mono text-[9px] tracking-[0.08em] text-champagne uppercase">
+                  <span class="px-3 py-1 rounded-full bg-obsidian/80 backdrop-blur-md border border-hairline font-display text-xs font-medium text-champagne">
                     ${project.category}
                   </span>
-                  <span class="px-2.5 py-1 rounded-full bg-obsidian/80 backdrop-blur-md font-mono text-[9px] tracking-[0.08em] text-ivory/85 uppercase">
+                  <span class="px-2.5 py-1 rounded-full bg-obsidian/80 backdrop-blur-md font-mono text-xs text-ivory/85">
                     ${project.aspect}
                   </span>
                 </div>
@@ -1235,35 +1485,29 @@
                     </svg>
                   </div>
                 </div>
+                `
+                }
               </div>
 
               <!-- Card Text Content -->
-              ${
-                project.hideCardDetails
-                  ? ''
-                  : `
               <div class="p-6 space-y-2.5">
-                <div class="flex items-center justify-between text-[10px] font-mono tracking-[0.08em] text-mutedIvory uppercase">
-                  <span>${project.subtitle}</span>
-                  <span>${project.duration.split('·')[0]}</span>
+                <div class="flex items-center justify-between text-xs font-display text-mutedIvory">
+                  <span>${project.category} · ${project.format}</span>
+                  <span class="${/^\d{2}:\d{2}$/.test(project.duration.split('·')[0].trim()) ? 'font-mono' : 'font-display'}">${project.duration.split('·')[0].trim()}</span>
                 </div>
-                <h3 class="font-serif text-2xl sm:text-[1.7rem] text-ivory group-hover:text-champagneLight transition-colors leading-snug">
+                <h3 class="font-heading font-semibold text-2xl sm:text-[1.7rem] text-ivory group-hover:text-champagneLight transition-colors leading-snug">
                   ${project.title}
                 </h3>
-                ${
-                  project.brief
-                    ? `
-                <p class="text-sm text-mutedIvory font-light line-clamp-2 leading-relaxed">
-                  ${project.brief}
+                <p class="text-sm text-mutedIvory font-normal line-clamp-2 leading-relaxed">
+                  ${project.description}
                 </p>
-                `
-                    : ''
-                }
               </div>
-              `
-              }
             </div>
 
+            ${
+              project.imageOnly
+                ? ''
+                : `
             <!-- Card Footer Tools Strip -->
             <div class="px-6 py-4 border-t border-hairline flex items-center justify-between gap-2 bg-obsidian/40">
               <div class="flex flex-wrap gap-1.5">
@@ -1271,14 +1515,16 @@
                   .slice(0, 3)
                   .map(
                     (tool) =>
-                      `<span class="px-2.5 py-0.5 rounded-full bg-charcoal border border-hairline text-[9px] font-mono tracking-[0.06em] text-ivory/75 uppercase">${tool}</span>`
+                      `<span class="px-2.5 py-0.5 rounded-full bg-charcoal border border-hairline text-xs font-display text-ivory/75">${tool}</span>`
                   )
                   .join('')}
               </div>
-              <span class="font-display text-[11px] tracking-[0.18em] text-champagne uppercase group-hover:translate-x-0.5 transition-transform">
-                WATCH ↗
+              <span class="font-display text-xs font-medium text-champagne group-hover:translate-x-0.5 transition-transform">
+                Watch ↗
               </span>
             </div>
+            `
+            }
           </article>
         `
         )
@@ -1369,6 +1615,8 @@
     const playStatusDot = document.getElementById('playStatusDot');
     const modalStage = document.getElementById('modalStage');
     const modalVideo = document.getElementById('modalVideo');
+    const modalYoutubeVideo = document.getElementById('modalYoutubeVideo');
+    const modalYoutubeFallback = document.getElementById('modalYoutubeFallback');
     const modalVideoError = document.getElementById('modalVideoError');
     const modalImage = document.getElementById('modalImage');
     const simulatedPlayerOverlays = [
@@ -1390,7 +1638,7 @@
       clearInterval(simInterval);
       simPlaying = true;
       simPlayIcon.textContent = '❚❚';
-      playStatusLabel.textContent = "PLAYING DIRECTOR'S CUT PREVIEW";
+      playStatusLabel.textContent = "Director's cut preview";
       playStatusDot.classList.add('animate-ping');
 
       simInterval = setInterval(() => {
@@ -1408,7 +1656,7 @@
       clearInterval(simInterval);
       simPlaying = false;
       simPlayIcon.textContent = '▶';
-      playStatusLabel.textContent = 'FRAME PAUSED';
+      playStatusLabel.textContent = 'Frame paused';
       playStatusDot.classList.remove('animate-ping');
     }
 
@@ -1423,6 +1671,10 @@
     function openProjectModal(projectId) {
       const item = projects.find((p) => p.id === projectId) || projects[0];
       const hasVideo = Boolean(item.video);
+      const hasYouTube = Boolean(item.youtubeId);
+      const hasImageOnly = Boolean(item.imageOnly);
+      const hasPlayableMedia = hasVideo || hasYouTube || hasImageOnly;
+      const stageAspect = item.cardAspect || (hasPlayableMedia ? 'aspect-[9/16]' : 'aspect-video');
 
       portfolioGrid.querySelectorAll('.project-preview-video').forEach((preview) => {
         preview.pause();
@@ -1431,37 +1683,58 @@
         if (preview.readyState > 0) preview.currentTime = 0;
       });
 
-      document.getElementById('modalCategory').textContent = item.category;
+      document.getElementById('modalCategory').textContent = `${item.category} · ${item.format}`;
       document.getElementById('modalDuration').textContent = item.duration;
       document.getElementById('modalAspect').textContent = item.aspect;
       document.getElementById('modalTitle').textContent = item.title;
-      document.getElementById('modalBrief').textContent = item.brief;
-      document.getElementById('modalCraft').textContent = item.craft;
-      document.getElementById('modalBrief').classList.toggle('hidden', !item.brief);
-      document.getElementById('modalDetailsPanel').classList.toggle(
-        'hidden',
-        item.tools.length === 0 && !item.craft
-      );
+      document.getElementById('modalDescription').textContent = item.description;
+      document.getElementById('modalCraftNotes').textContent = item.craftNotes;
 
       modalVideo.pause();
       modalVideo.removeAttribute('src');
       modalVideo.load();
+      modalYoutubeVideo.src = 'about:blank';
+      modalYoutubeVideo.classList.add('hidden');
+      modalYoutubeFallback.classList.toggle('hidden', !hasYouTube);
+      modalImage.classList.toggle('object-contain', hasImageOnly);
+      modalImage.classList.toggle('object-cover', !hasImageOnly);
+      modalImage.classList.toggle('ken-burns', !hasImageOnly);
+      modalImage.classList.toggle('brightness-90', !hasImageOnly);
+      if (hasYouTube) {
+        modalYoutubeFallback.href = `https://www.youtube.com/watch?v=${encodeURIComponent(item.youtubeId)}`;
+      }
       modalVideoError.classList.add('hidden');
-      simulatedPlayerOverlays.forEach((overlay) => overlay.classList.toggle('hidden', hasVideo));
+      simulatedPlayerOverlays.forEach((overlay) => overlay.classList.toggle('hidden', hasPlayableMedia));
 
-      if (hasVideo) {
+      modalStage.classList.remove(
+        'aspect-video',
+        'aspect-[9/16]',
+        'aspect-[4/3]',
+        'aspect-[16/9]',
+        'max-w-sm',
+        'mx-auto'
+      );
+      modalStage.classList.add(stageAspect);
+      if (stageAspect === 'aspect-[9/16]') {
+        modalStage.classList.add('max-w-sm', 'mx-auto');
+      }
+
+      if (hasVideo || hasYouTube) {
         clearInterval(simInterval);
         modalImage.classList.add('hidden');
-        modalVideo.classList.remove('hidden');
-        modalStage.classList.remove('aspect-video');
-        modalStage.classList.add('aspect-[9/16]', 'max-w-sm', 'mx-auto');
-        modalVideo.src = item.video;
-        modalVideo.load();
+        if (hasVideo) {
+          modalVideo.classList.remove('hidden');
+          modalVideo.src = item.video;
+          modalVideo.load();
+        } else {
+          modalVideo.classList.add('hidden');
+          modalYoutubeVideo.title = item.title;
+          modalYoutubeVideo.classList.remove('hidden');
+        }
       } else {
         modalVideo.classList.add('hidden');
         modalImage.classList.remove('hidden');
-        modalStage.classList.remove('aspect-[9/16]', 'max-w-sm', 'mx-auto');
-        modalStage.classList.add('aspect-video');
+        modalImage.alt = `${item.title} preview`;
         modalImage.src = item.image;
         modalImage.onerror = function () {
           this.onerror = null;
@@ -1472,7 +1745,7 @@
       document.getElementById('modalTools').innerHTML = item.tools
         .map(
           (tool) =>
-            `<span class="px-3 py-1 rounded-full bg-charcoal border border-champagne/30 font-mono text-[9px] tracking-[0.06em] text-ivory uppercase">${tool}</span>`
+            `<span class="px-3 py-1 rounded-full bg-charcoal border border-champagne/30 font-display text-xs text-ivory">${tool}</span>`
         )
         .join('');
 
@@ -1481,13 +1754,16 @@
       projectModal.classList.remove('hidden');
       projectModal.classList.add('flex');
       document.body.style.overflow = 'hidden';
+      if (hasYouTube) {
+        modalYoutubeVideo.src = `https://www.youtube.com/embed/${item.youtubeId}?playsinline=1&rel=0`;
+      }
       if (hasVideo) {
         modalVideo.play().catch((error) => {
           if (error.name === 'AbortError') return;
           console.error('Unable to play project video:', error);
           modalVideoError.classList.remove('hidden');
         });
-      } else {
+      } else if (!hasYouTube && !hasImageOnly) {
         startSimPlayback();
       }
     }
@@ -1498,6 +1774,8 @@
       if (modalVideo.readyState > 0) modalVideo.currentTime = 0;
       modalVideo.removeAttribute('src');
       modalVideo.load();
+      modalYoutubeVideo.src = 'about:blank';
+      modalYoutubeVideo.classList.add('hidden');
       projectModal.classList.add('hidden');
       projectModal.classList.remove('flex');
       document.body.style.overflow = '';
@@ -1546,10 +1824,82 @@
       document.body.removeChild(tempInput);
 
       const label = document.getElementById('copyEmailText');
-      label.textContent = 'COPIED TO CLIPBOARD ✓';
+      label.textContent = 'Copied to clipboard ✓';
       setTimeout(() => {
-        label.textContent = 'COPY EMAIL';
+        label.textContent = 'Copy email';
       }, 2400);
+    }
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const revealHeadings = Array.from(document.querySelectorAll('.reveal-heading'));
+
+    revealHeadings.forEach((heading) => {
+      heading.querySelectorAll('.reveal-line').forEach((line, index) => {
+        line.style.setProperty('--line-index', index);
+      });
+    });
+
+    if (reducedMotion || !('IntersectionObserver' in window)) {
+      revealHeadings.forEach((heading) => heading.classList.add('is-visible'));
+    } else {
+      document.documentElement.classList.add('motion-ready');
+      const heroHeading = document.querySelector('.reveal-hero');
+      requestAnimationFrame(() => heroHeading?.classList.add('is-visible'));
+
+      const headingObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.18, rootMargin: '0px 0px -8% 0px' }
+      );
+
+      revealHeadings
+        .filter((heading) => !heading.classList.contains('reveal-hero'))
+        .forEach((heading) => headingObserver.observe(heading));
+    }
+
+    const portraitColumn = document.querySelector('.creator-portrait-column');
+    if (portraitColumn && !reducedMotion) {
+      let portraitFrame = 0;
+      const updatePortraitParallax = () => {
+        portraitFrame = 0;
+        const bounds = portraitColumn.getBoundingClientRect();
+        const distanceFromCenter = window.innerHeight / 2 - (bounds.top + bounds.height / 2);
+        const offset = Math.max(-12, Math.min(12, distanceFromCenter * 0.025));
+        portraitColumn.style.transform = `translate3d(0, ${offset.toFixed(2)}px, 0)`;
+      };
+      const queuePortraitParallax = () => {
+        if (!portraitFrame) portraitFrame = requestAnimationFrame(updatePortraitParallax);
+      };
+
+      window.addEventListener('scroll', queuePortraitParallax, { passive: true });
+      window.addEventListener('resize', queuePortraitParallax, { passive: true });
+      queuePortraitParallax();
+    }
+
+    const playReelTrigger = document.getElementById('playReelTrigger');
+    const playReelIcon = playReelTrigger?.querySelector('.play-reel-icon');
+    if (
+      playReelTrigger &&
+      playReelIcon &&
+      !reducedMotion &&
+      window.matchMedia('(hover: hover) and (pointer: fine)').matches
+    ) {
+      playReelTrigger.addEventListener('pointermove', (event) => {
+        const bounds = playReelTrigger.getBoundingClientRect();
+        const x = Math.max(-6, Math.min(6, ((event.clientX - bounds.left) / bounds.width - 0.5) * 12));
+        const y = Math.max(-6, Math.min(6, ((event.clientY - bounds.top) / bounds.height - 0.5) * 12));
+        playReelIcon.style.setProperty('--magnetic-x', `${x.toFixed(2)}px`);
+        playReelIcon.style.setProperty('--magnetic-y', `${y.toFixed(2)}px`);
+      });
+      playReelTrigger.addEventListener('pointerleave', () => {
+        playReelIcon.style.setProperty('--magnetic-x', '0px');
+        playReelIcon.style.setProperty('--magnetic-y', '0px');
+      });
     }
 
     // Initialize Portfolio Grid on Load
